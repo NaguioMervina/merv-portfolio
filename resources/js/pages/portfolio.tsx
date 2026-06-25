@@ -191,7 +191,7 @@ export default function Portfolio() {
                                         Software Developer · Laravel · React · Vite
                                     </p>
                                     <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-balance text-slate-950 sm:text-6xl xl:text-7xl dark:text-white">
-                                        I build practical full-stack systems that are easy to trust, review, and ship.
+                                        {heroTagline}
                                     </h1>
                                     <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">{heroSummary}</p>
                                 </div>
