@@ -44,7 +44,7 @@ yarn-error.log
 # Personal files
 Dockerfile
 *.pdf
-merv.jpg
+/merv.jpg
 
 # Windows metadata
 *:Zone.Identifier
