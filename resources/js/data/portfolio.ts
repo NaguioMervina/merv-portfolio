@@ -116,17 +116,6 @@ export const portfolioContent: PortfolioContent = {
             github_url: null,
             is_featured: true,
         },
-        {
-            id: 3,
-            title: 'GitLab Contribution Showcase',
-            description:
-                'A privacy-aware activity showcase concept that summarizes contribution patterns without exposing private repository details.',
-            thumbnail: null,
-            tech_stack: 'Laravel, React, GitLab, Data normalization, Caching',
-            live_url: null,
-            github_url: 'https://github.com/NaguioMervina/gitlab-contribution-showcase',
-            is_featured: false,
-        },
     ],
     experiences: [
         {
