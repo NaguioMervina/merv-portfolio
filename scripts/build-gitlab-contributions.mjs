@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -185,6 +185,19 @@ function unavailablePayload() {
 
 async function writePayload(payload) {
     await mkdir(path.dirname(outputPath), { recursive: true });
+
+    try {
+        const existing = JSON.parse(await readFile(outputPath, 'utf-8'));
+        const { generated_at: _existingTimestamp, ...existingData } = existing;
+        const { generated_at: _newTimestamp, ...newData } = payload;
+
+        if (JSON.stringify(existingData) === JSON.stringify(newData)) {
+            return;
+        }
+    } catch {
+        // File doesn't exist or is invalid — write it.
+    }
+
     await writeFile(outputPath, `${JSON.stringify(payload, null, 4)}\n`);
 }
 
