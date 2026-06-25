@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./resources/js/*"]
+        },
+        "jsx": "react-jsx",
+        "noEmit": true,
+        "types": ["vite/client"]
+    },
+    "include": [
+        "resources/js/main.tsx",
+        "resources/js/data/**/*.ts",
+        "resources/js/data/**/*.json",
+        "resources/js/pages/portfolio.tsx",
+        "resources/js/components/portfolio/**/*.tsx",
+        "resources/js/components/ui/dialog.tsx",
+        "resources/js/lib/**/*.ts"
+    ]
+}

@@ -1,0 +1,54 @@
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/bootstrap/ssr
+/node_modules
+/dist
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+auth.json
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Mnemosyne control docs / agent memory
+/MNEMOSYNE.md
+/PLANS.md
+/PRODUCT.md
+/WORKFLOW.md
+/ROADMAP.md
+/SECURITY.md
+/RUNBOOK.md
+/CODESTYLE.md
+/DESIGN.md
+/ARCHITECTURE.md
+/DATA_MAP.md
+/GLOSSARY.md
+/KNOWN_ISSUES.md
+/plans/
+
+# Personal files
+Dockerfile
+*.pdf
+merv.jpg
+
+# Windows metadata
+*:Zone.Identifier
+
+# Agent/Codex directories
+.agents/
+.codex/
