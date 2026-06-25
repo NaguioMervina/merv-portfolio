@@ -52,3 +52,6 @@ Dockerfile
 # Agent/Codex directories
 .agents/
 .codex/
+
+# GitHub Actions (local only)
+.github/workflows/
