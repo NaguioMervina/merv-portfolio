@@ -148,7 +148,7 @@ export default function Portfolio() {
                             </div>
                             <div>
                                 <div className="text-sm font-semibold text-slate-950 dark:text-white">{personName}</div>
-                                <div className="text-xs text-slate-500 dark:text-slate-400">{heroTagline}</div>
+                                <div className="text-xs text-slate-500 dark:text-slate-400">Full Stack Developer</div>
                             </div>
                         </button>
 
@@ -281,7 +281,7 @@ export default function Portfolio() {
                                             )}
                                             <div>
                                                 <div className="text-xl font-semibold text-slate-950 dark:text-white">{personName}</div>
-                                                <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">{heroTagline}</div>
+                                                <div className="mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{heroSummary}</div>
                                                 {profile?.location && (
                                                     <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
                                                         <MapPin className="size-3.5" />
@@ -729,7 +729,6 @@ export default function Portfolio() {
                             />
                             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6 pt-16">
                                 <div className="text-xl font-semibold text-white">{personName}</div>
-                                <div className="mt-1 text-sm text-white/80">{heroTagline}</div>
                             </div>
                         </div>
                     </DialogContent>
