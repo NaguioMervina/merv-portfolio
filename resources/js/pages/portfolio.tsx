@@ -265,7 +265,7 @@ export default function Portfolio() {
                                                 <button
                                                     type="button"
                                                     onClick={() => setShowProfilePicture(true)}
-                                                    className="group relative h-28 w-28 cursor-pointer overflow-hidden rounded-2xl transition hover:ring-2 hover:ring-sky-500/50 hover:ring-offset-2 hover:ring-offset-white dark:hover:ring-offset-slate-900"
+                                                    className="group relative h-28 w-36 cursor-pointer overflow-hidden rounded-2xl transition hover:ring-2 hover:ring-sky-500/50 hover:ring-offset-2 hover:ring-offset-white dark:hover:ring-offset-slate-900"
                                                 >
                                                     <img src={profile.photo} alt={personName} className="h-full w-full rounded-2xl object-cover" />
                                                     <div className="absolute inset-0 flex items-center justify-center rounded-[1.5rem] bg-black/0 transition group-hover:bg-black/20">
