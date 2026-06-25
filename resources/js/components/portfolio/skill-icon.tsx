@@ -14,6 +14,8 @@ const brandColors: Record<string, string> = {
     git: '#F05032',
     docker: '#2496ED',
     jira: '#0052CC',
+    putty: '#0000FF',
+    'mysql-workbench': '#4479A1',
 };
 
 export function SkillIcon({ icon, className = 'size-6' }: SkillIconProps) {
@@ -100,6 +102,16 @@ export function SkillIcon({ icon, className = 'size-6' }: SkillIconProps) {
         support: (
             <svg className={className} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+        ),
+        putty: (
+            <svg className={className} viewBox="0 0 24 24" fill={color}>
+                <path d="M2 4v16h20V4H2zm2 2h16v12H4V6zm2 2v2h2V8H6zm4 0v2h8V8h-8zm-4 4v2h2v-2H6zm4 0v2h4v-2h-4z" />
+            </svg>
+        ),
+        'mysql-workbench': (
+            <svg className={className} viewBox="0 0 24 24" fill={color}>
+                <path d="M12 2C6.48 2 2 3.79 2 6v12c0 2.21 4.48 4 10 4s10-1.79 10-4V6c0-2.21-4.48-4-10-4zm0 2c4.42 0 8 1.34 8 3s-3.58 3-8 3-8-1.34-8-3 3.58-3 8-3zm0 16c-4.42 0-8-1.34-8-3v-3.27C5.7 14.88 8.68 15.5 12 15.5s6.3-.62 8-1.77V17c0 1.66-3.58 3-8 3zm0-8c-4.42 0-8-1.34-8-3V7.27C5.7 6.88 8.68 7.5 12 7.5s6.3-.62 8-1.77V9c0 1.66-3.58 3-8 3z" />
             </svg>
         ),
     };

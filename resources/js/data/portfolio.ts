@@ -91,6 +91,8 @@ export const portfolioContent: PortfolioContent = {
             { id: 13, name: 'Jira', icon: 'jira', category: 'tools', proficiency: 78 },
             { id: 14, name: 'WSL Ubuntu', icon: 'terminal', category: 'tools', proficiency: 80 },
             { id: 15, name: 'IT Support', icon: 'support', category: 'tools', proficiency: 86 },
+            { id: 16, name: 'PuTTY', icon: 'putty', category: 'tools', proficiency: 80 },
+            { id: 17, name: 'MySQL Workbench', icon: 'mysql-workbench', category: 'tools', proficiency: 82 },
         ],
     },
     projects: [
