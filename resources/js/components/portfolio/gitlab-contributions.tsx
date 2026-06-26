@@ -108,7 +108,7 @@ export function GitLabContributions({ contributions }: GitLabContributionsProps)
                         <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/70 p-5 dark:border-slate-800 dark:bg-slate-900/70">
                             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
                                 <h3 className="text-sm font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400">
-                                    365-day heatmap
+                                    Contribution heatmap
                                 </h3>
                                 {contributions.busiest_day && (
                                     <div className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">

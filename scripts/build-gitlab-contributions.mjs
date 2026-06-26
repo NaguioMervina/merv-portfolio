@@ -18,7 +18,7 @@ async function main() {
     }
 
     const today = startOfUtcDay(new Date());
-    const startDate = addDays(today, -364);
+    const startDate = new Date(Date.UTC(2010, 0, 1));
     const endpoint = new URL(`${baseUrl}/users/${encodeURIComponent(username)}/calendar.json`);
 
     endpoint.searchParams.set('start_date', toDateString(startDate));
@@ -35,7 +35,9 @@ async function main() {
 
         const calendar = await response.json();
         const dailyCounts = normalizeCalendarCounts(calendar, startDate, today);
-        const summary = buildSummary(dailyCounts, startDate, today);
+        const firstContributionDate = findFirstContributionDate(dailyCounts);
+        const rangeStart = firstContributionDate || startDate;
+        const summary = buildSummary(dailyCounts, rangeStart, today);
 
         await writePayload({
             available: true,
@@ -46,8 +48,8 @@ async function main() {
             active_days: summary.activeDays,
             longest_streak: summary.longestStreak,
             busiest_day: summary.busiestDay,
-            range_label: `${formatDateLabel(startDate)} - ${formatDateLabel(today)}`,
-            weeks: buildHeatmapWeeks(dailyCounts, startDate, today),
+            range_label: `${formatDateLabel(rangeStart)} - ${formatDateLabel(today)}`,
+            weeks: buildHeatmapWeeks(dailyCounts, rangeStart, today),
         });
     } catch (error) {
         console.warn(`[gitlab] ${error instanceof Error ? error.message : 'Contribution snapshot failed.'}`);
@@ -75,6 +77,12 @@ function normalizeCalendarCounts(calendar, startDate, endDate) {
 
         return counts;
     }, {});
+}
+
+function findFirstContributionDate(dailyCounts) {
+    const dates = Object.keys(dailyCounts).filter((date) => dailyCounts[date] > 0).sort();
+
+    return dates.length > 0 ? parseDateString(dates[0]) : null;
 }
 
 function buildSummary(dailyCounts, startDate, endDate) {
