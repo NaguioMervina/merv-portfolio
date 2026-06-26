@@ -229,7 +229,7 @@ export default function Portfolio() {
                                     </SocialLink>
                                     {profile?.user?.email && (
                                         <a
-                                            href={`mailto:${profile.user.email}`}
+                                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}`}
                                             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-950 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:text-white"
                                         >
                                             <Mail className="size-4" />
