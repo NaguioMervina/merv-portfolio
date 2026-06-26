@@ -45,6 +45,7 @@ export default function Portfolio() {
     });
     const [errors, setErrors] = useState<Partial<Record<keyof typeof data, string>>>({});
     const [formStatus, setFormStatus] = useState<string | null>(null);
+    const [cooldown, setCooldown] = useState(0);
     const [showProfilePicture, setShowProfilePicture] = useState(false);
 
     const setData = (field: keyof typeof data, value: string) => {
@@ -92,8 +93,16 @@ export default function Portfolio() {
         document.title = `${personName} - ${heroTagline}`;
     }, [heroTagline, personName]);
 
+    useEffect(() => {
+        if (cooldown <= 0) return;
+        const timer = setTimeout(() => setCooldown((c) => c - 1), 1000);
+        return () => clearTimeout(timer);
+    }, [cooldown]);
+
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
+
+        if (cooldown > 0) return;
 
         const nextErrors: Partial<Record<keyof typeof data, string>> = {};
 
@@ -125,6 +134,7 @@ export default function Portfolio() {
         window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}&su=${subject}&body=${body}`, '_blank');
         setFormStatus('Your email app should open with the message ready to send.');
         setContactData({ name: '', email: '', message: '' });
+        setCooldown(30);
     };
 
     const scrollTo = (id: string) => {
@@ -606,10 +616,11 @@ export default function Portfolio() {
                                         />
                                         <button
                                             type="submit"
-                                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                                            disabled={cooldown > 0}
+                                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
                                         >
                                             <Send className="size-4" />
-                                            Send message
+                                            {cooldown > 0 ? `Please wait ${cooldown}s...` : 'Send message'}
                                         </button>
                                     </form>
                                 </div>
