@@ -54,7 +54,7 @@ export const portfolioContent: PortfolioContent = {
     profile: {
         id: 1,
         user_id: 1,
-        tagline: 'Full-stack developer with strong Laravel and MySQL skills, growing into React.',
+        tagline: 'Full-stack developer with strong Laravel and MySQL skills.',
         bio: 'I build and maintain web-based applications with a strong focus on Laravel, MySQL, and practical school management workflows. My experience spans frontend and backend development, database management, troubleshooting, user support, and performance improvements for real operational systems.',
         photo: '/merv.jpg',
         resume_path: null,
