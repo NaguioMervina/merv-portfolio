@@ -122,7 +122,7 @@ export default function Portfolio() {
         const subject = encodeURIComponent(`Portfolio inquiry from ${data.name}`);
         const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`);
 
-        window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}&su=${subject}&body=${body}`;
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}&su=${subject}&body=${body}`, '_blank');
         setFormStatus('Your email app should open with the message ready to send.');
         setContactData({ name: '', email: '', message: '' });
     };
@@ -230,6 +230,8 @@ export default function Portfolio() {
                                     {profile?.user?.email && (
                                         <a
                                             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-950 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:text-white"
                                         >
                                             <Mail className="size-4" />
