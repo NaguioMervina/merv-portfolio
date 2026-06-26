@@ -1,0 +1,27 @@
+name: Refresh GitLab Contributions
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm run refresh:gitlab
+        env:
+          GITLAB_USERNAME: NaguioMervina
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resources/js/data/gitlab-contributions.json
+          git diff --cached --quiet || git commit -m "chore: refresh GitLab contributions [skip ci]" && git push
