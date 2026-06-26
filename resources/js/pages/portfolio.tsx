@@ -122,7 +122,7 @@ export default function Portfolio() {
         const subject = encodeURIComponent(`Portfolio inquiry from ${data.name}`);
         const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`);
 
-        window.location.href = `mailto:${profile.user.email}?subject=${subject}&body=${body}`;
+        window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.user.email}&su=${subject}&body=${body}`;
         setFormStatus('Your email app should open with the message ready to send.');
         setContactData({ name: '', email: '', message: '' });
     };
