@@ -8,7 +8,6 @@ const outputPath = path.join(root, 'resources/js/data/gitlab-contributions.json'
 
 const username = (process.env.GITLAB_USERNAME || process.env.VITE_GITLAB_USERNAME || 'NaguioMervina').trim();
 const baseUrl = (process.env.GITLAB_BASE_URL || process.env.VITE_GITLAB_BASE_URL || 'https://gitlab.com').replace(/\/+$/, '');
-const token = (process.env.GITLAB_TOKEN || process.env.VITE_GITLAB_TOKEN || '').trim();
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
@@ -26,12 +25,9 @@ async function main() {
     endpoint.searchParams.set('end_date', toDateString(today));
 
     try {
-        const headers = { accept: 'application/json' };
-        if (token) {
-            headers['PRIVATE-TOKEN'] = token;
-        }
-
-        const response = await fetch(endpoint, { headers });
+        const response = await fetch(endpoint, {
+            headers: { accept: 'application/json' },
+        });
 
         if (!response.ok) {
             throw new Error(`GitLab calendar request failed with status ${response.status}.`);
@@ -48,7 +44,6 @@ async function main() {
             username,
             profile_url: `${baseUrl}/${username}`,
             generated_at: new Date().toISOString(),
-            member_since: process.env.GITLAB_MEMBER_SINCE || null,
             total: summary.total,
             active_days: summary.activeDays,
             longest_streak: summary.longestStreak,
@@ -187,7 +182,6 @@ function unavailablePayload() {
         username,
         profile_url: username ? `${baseUrl}/${username}` : baseUrl,
         generated_at: new Date().toISOString(),
-        member_since: null,
         total: 0,
         active_days: 0,
         longest_streak: 0,
@@ -202,14 +196,8 @@ async function writePayload(payload) {
 
     try {
         const existing = JSON.parse(await readFile(outputPath, 'utf-8'));
-
-        // Preserve member_since from existing file if not set in new payload
-        if (!payload.member_since && existing.member_since) {
-            payload.member_since = existing.member_since;
-        }
-
-        const existingData = excludeKey(existing, 'generated_at');
-        const newData = excludeKey(payload, 'generated_at');
+        const { generated_at: _existingTimestamp, ...existingData } = existing;
+        const { generated_at: _newTimestamp, ...newData } = payload;
 
         if (JSON.stringify(existingData) === JSON.stringify(newData)) {
             return;
@@ -219,11 +207,6 @@ async function writePayload(payload) {
     }
 
     await writeFile(outputPath, `${JSON.stringify(payload, null, 4)}\n`);
-}
-
-function excludeKey(obj, key) {
-    const { [key]: _, ...rest } = obj;
-    return rest;
 }
 
 function startOfUtcDay(date) {

@@ -19,7 +19,6 @@ export interface GitLabContributionData {
     username: string;
     profile_url: string;
     generated_at: string;
-    member_since?: string;
     total: number;
     active_days: number;
     longest_streak: number;
@@ -63,11 +62,6 @@ export function GitLabContributions({ contributions }: GitLabContributionsProps)
                                 <CalendarDays className="size-4 text-sky-500" />
                                 {contributions.range_label ?? 'GitLab unavailable'}
                             </span>
-                            {contributions.member_since && (
-                                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-300">
-                                    Member since {contributions.member_since}
-                                </span>
-                            )}
                             {contributions.available && (
                                 <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 dark:border-slate-800 dark:bg-slate-900">
                                     Snapshot refreshed {formatGeneratedDate(contributions.generated_at)}
