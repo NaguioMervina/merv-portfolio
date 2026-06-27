@@ -25,22 +25,6 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-# Mnemosyne control docs / agent memory
-/MNEMOSYNE.md
-/PLANS.md
-/PRODUCT.md
-/WORKFLOW.md
-/ROADMAP.md
-/SECURITY.md
-/RUNBOOK.md
-/CODESTYLE.md
-/DESIGN.md
-/ARCHITECTURE.md
-/DATA_MAP.md
-/GLOSSARY.md
-/KNOWN_ISSUES.md
-/plans/
-
 # Personal files
 Dockerfile
 *.pdf
@@ -48,9 +32,4 @@ Dockerfile
 
 # Windows metadata
 *:Zone.Identifier
-
-# Agent/Codex directories
-.agents/
-.codex/
-
 
