@@ -96,17 +96,6 @@ export const portfolioContent: PortfolioContent = {
     },
     projects: [
         {
-            id: 1,
-            title: 'School Management System',
-            description:
-                'A large-scale school management system maintained and enhanced at KumoSoft Inc., covering enrollment, grading, scheduling, and student classification workflows.',
-            thumbnail: '/thumbnails/62409655-80eb-49ce-9f12-9bd67ec437e7.png',
-            tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
-            live_url: null,
-            github_url: null,
-            is_featured: false,
-        },
-        {
             id: 2,
             title: 'WMSU Distance Learning CMS',
             description:
