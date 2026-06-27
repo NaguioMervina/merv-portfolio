@@ -198,6 +198,12 @@ async function writePayload(payload) {
 
     try {
         const existing = JSON.parse(await readFile(outputPath, 'utf-8'));
+
+        // Preserve member_since from existing file if not set in new payload
+        if (!payload.member_since && existing.member_since) {
+            payload.member_since = existing.member_since;
+        }
+
         const { generated_at: _existingTimestamp, ...existingData } = existing;
         const { generated_at: _newTimestamp, ...newData } = payload;
 
