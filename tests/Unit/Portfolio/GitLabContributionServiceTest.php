@@ -55,13 +55,13 @@ class GitLabContributionServiceTest extends TestCase
         $this->assertTrue($data['available']);
         $this->assertSame('NaguioMervina', $data['username']);
         $this->assertSame('https://gitlab.example/NaguioMervina', $data['profile_url']);
-        $this->assertSame(45, $data['total']);
-        $this->assertSame(4, $data['active_days']);
-        $this->assertSame(4, $data['longest_streak']);
+        $this->assertSame(15, $data['total']);
+        $this->assertSame(3, $data['active_days']);
+        $this->assertSame(3, $data['longest_streak']);
         $this->assertSame([
-            'date' => '2026-06-21',
-            'label' => 'Jun 21, 2026',
-            'count' => 30,
+            'date' => '2026-06-20',
+            'label' => 'Jun 20, 2026',
+            'count' => 10,
         ], $data['busiest_day']);
         $this->assertSame('Jun 22, 2025 – Jun 21, 2026', $data['range_label']);
         $this->assertCount(53, $data['weeks']);
@@ -110,7 +110,7 @@ class GitLabContributionServiceTest extends TestCase
         $this->assertSame(0, $data['total']);
         $this->assertSame([], $data['weeks']);
         $this->assertSame([], $data['recent_private_contributions']);
-        Http::assertSentCount(1);
+        Http::assertSentCount(2);
     }
 
     public function test_it_returns_null_when_no_gitlab_username_is_configured(): void
