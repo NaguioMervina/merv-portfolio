@@ -55,19 +55,21 @@ class GitLabContributionServiceTest extends TestCase
         $this->assertTrue($data['available']);
         $this->assertSame('NaguioMervina', $data['username']);
         $this->assertSame('https://gitlab.example/NaguioMervina', $data['profile_url']);
-        $this->assertSame(54, $data['total']);
-        $this->assertSame(5, $data['active_days']);
+        $this->assertSame(45, $data['total']);
+        $this->assertSame(4, $data['active_days']);
         $this->assertSame(4, $data['longest_streak']);
         $this->assertSame([
             'date' => '2026-06-21',
             'label' => 'Jun 21, 2026',
             'count' => 30,
         ], $data['busiest_day']);
-        $this->assertSame('Jan 1, 2010 – Jun 21, 2026', $data['range_label']);
-        $this->assertNotEmpty($data['weeks']);
-        $this->assertSame('Jan', $data['weeks'][0]['month']);
-        $this->assertSame('2009-12-27', $data['weeks'][0]['days'][0]['date']);
-        $this->assertFalse($data['weeks'][0]['days'][0]['visible']);
+        $this->assertSame('Jun 22, 2025 – Jun 21, 2026', $data['range_label']);
+        $this->assertCount(53, $data['weeks']);
+        $this->assertSame('Jun', $data['weeks'][0]['month']);
+        $this->assertSame('2025-06-22', $data['weeks'][0]['days'][0]['date']);
+        $this->assertTrue($data['weeks'][0]['days'][0]['visible']);
+        $this->assertSame('2026-06-27', $data['weeks'][52]['days'][6]['date']);
+        $this->assertFalse($data['weeks'][52]['days'][6]['visible']);
         $this->assertCount(1, $data['recent_private_contributions']);
         $this->assertSame('2026-06-21T10:09:00+00:00', $data['recent_private_contributions'][0]['occurred_at']);
         $this->assertSame('Jun 21, 2026 10:09 AM UTC', $data['recent_private_contributions'][0]['date_label']);
@@ -77,7 +79,7 @@ class GitLabContributionServiceTest extends TestCase
                 return true;
             }
 
-            return ($request['start_date'] ?? null) === '2010-01-01'
+            return ($request['start_date'] ?? null) === '2025-06-22'
                 && ($request['end_date'] ?? null) === '2026-06-21';
         });
     }
@@ -108,7 +110,7 @@ class GitLabContributionServiceTest extends TestCase
         $this->assertSame(0, $data['total']);
         $this->assertSame([], $data['weeks']);
         $this->assertSame([], $data['recent_private_contributions']);
-        Http::assertSentCount(2);
+        Http::assertSentCount(1);
     }
 
     public function test_it_returns_null_when_no_gitlab_username_is_configured(): void
