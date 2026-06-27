@@ -112,7 +112,7 @@ export const portfolioContent: PortfolioContent = {
             description:
                 'A collaborative ticketing system for managing tasks, tracking issues, and streamlining team workflows in real time.',
             thumbnail: '/thumbnails/ticketing.png',
-            tech_stack: 'Laravel, React, MySQL',
+            tech_stack: 'Laravel, Vue.js, JavaScript, MySQL',
             live_url: 'https://twiddling-likewise-perfected.ngrok-free.dev/',
             github_url: null,
             is_featured: false,
