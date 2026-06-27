@@ -30,6 +30,11 @@ export interface Project {
     live_url: string | null;
     github_url: string | null;
     is_featured: boolean;
+    role?: string;
+    collaborator?: {
+        name: string;
+        url: string | null;
+    } | null;
 }
 
 export interface Experience {
@@ -116,6 +121,11 @@ export const portfolioContent: PortfolioContent = {
             live_url: 'https://twiddling-likewise-perfected.ngrok-free.dev/',
             github_url: null,
             is_featured: false,
+            role: 'Contributor',
+            collaborator: {
+                name: 'isaldaba',
+                url: 'https://github.com/isaldaba',
+            },
         },
         {
             id: 4,

@@ -673,6 +673,7 @@ export default function Portfolio() {
                                 <DialogDescription className="pt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
                                     {selectedProject.description}
                                 </DialogDescription>
+                                <ProjectCredit project={selectedProject} className="pt-4" linkCollaborator />
                             </DialogHeader>
 
                             {selectedProject.tech_stack && (
@@ -793,6 +794,47 @@ function EmptyState({ title, description }: { title: string; description?: strin
     );
 }
 
+function ProjectCredit({
+    project,
+    className,
+    linkCollaborator = false,
+}: {
+    project: Project;
+    className?: string;
+    linkCollaborator?: boolean;
+}) {
+    if (!project.role && !project.collaborator) {
+        return null;
+    }
+
+    return (
+        <div className={cn('space-y-2 text-sm text-slate-600 dark:text-slate-300', className)}>
+            {project.role ? (
+                <div>
+                    <span className="font-semibold text-slate-900 dark:text-white">Role:</span> {project.role}
+                </div>
+            ) : null}
+            {project.collaborator ? (
+                <div>
+                    <span className="font-semibold text-slate-900 dark:text-white">Collaborated with:</span>{' '}
+                    {linkCollaborator && project.collaborator.url ? (
+                        <a
+                            href={project.collaborator.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-sky-700 underline decoration-sky-300 underline-offset-4 transition hover:text-sky-900 dark:text-sky-300 dark:decoration-sky-700 dark:hover:text-sky-200"
+                        >
+                            {project.collaborator.name}
+                        </a>
+                    ) : (
+                        project.collaborator.name
+                    )}
+                </div>
+            ) : null}
+        </div>
+    );
+}
+
 function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (event: MouseEvent<HTMLButtonElement>) => void }) {
     return (
         <button
@@ -823,6 +865,7 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
                         </div>
                         <h3 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">{project.title}</h3>
                         <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300">{project.description}</p>
+                        <ProjectCredit project={project} className="mt-4" />
                     </div>
 
                     <div className="mt-8 space-y-5">
@@ -860,6 +903,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: Mo
                 <div>
                     <h3 className="text-xl font-semibold text-slate-950 dark:text-white">{project.title}</h3>
                     <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
+                    <ProjectCredit project={project} className="mt-3" />
                 </div>
                 <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
                     {project.is_featured ? 'Featured' : 'Project'}
@@ -950,5 +994,4 @@ function calculateYearsExperience(experiences: Experience[]): number {
 
     return Math.max(years, 1);
 }
-
 
