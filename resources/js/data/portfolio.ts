@@ -108,7 +108,7 @@ export const portfolioContent: PortfolioContent = {
         },
         {
             id: 3,
-            title: 'Collab Ticketing System',
+            title: 'L1 Support Ticketing System',
             description:
                 'A collaborative ticketing system for managing tasks, tracking issues, and streamlining team workflows in real time, deployed within an ngrok environment using Docker.',
             thumbnail: '/thumbnails/ticketing.png',
