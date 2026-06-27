@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "npm run refresh:gitlab && tsc --noEmit && vite build",
+        "build": "npm run refresh:gitlab || true && tsc --noEmit && vite build",
         "dev": "vite",
         "preview": "vite preview",
         "refresh:gitlab": "node scripts/build-gitlab-contributions.mjs",
