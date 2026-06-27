@@ -128,6 +128,28 @@ export const portfolioContent: PortfolioContent = {
             github_url: null,
             is_featured: false,
         },
+        {
+            id: 4,
+            title: 'RMMC Main - School Management System',
+            description:
+                'A comprehensive school management system for RMMC Main campus, handling enrollment, grading, scheduling, student records, and administrative workflows for the institution.',
+            thumbnail: null,
+            tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
+            live_url: 'https://rmmcmain.com',
+            github_url: null,
+            is_featured: false,
+        },
+        {
+            id: 5,
+            title: 'RMMC MI - School Management System',
+            description:
+                'A school management system for RMMC MI campus, providing enrollment management, grade tracking, class scheduling, and student information management capabilities.',
+            thumbnail: null,
+            tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
+            live_url: 'https://rmmcmi.com',
+            github_url: null,
+            is_featured: false,
+        },
     ],
     experiences: [
         {
