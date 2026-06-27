@@ -144,7 +144,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'RMMC MI - School Management System',
             description:
                 'A school management system for RMMC MI campus, providing enrollment management, grade tracking, class scheduling, and student information management capabilities.',
-            thumbnail: null,
+            thumbnail: '/thumbnails/80c2bf86-8bb8-41b5-9f8b-70ee78528181.png',
             tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
             live_url: 'https://rmmcmi.com',
             github_url: null,
