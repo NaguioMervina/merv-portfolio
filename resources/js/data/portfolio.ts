@@ -104,7 +104,7 @@ export const portfolioContent: PortfolioContent = {
             tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
             live_url: null,
             github_url: null,
-            is_featured: true,
+            is_featured: false,
         },
         {
             id: 2,
@@ -115,7 +115,7 @@ export const portfolioContent: PortfolioContent = {
             tech_stack: 'PHP, HTML, CSS, JavaScript, CMS',
             live_url: null,
             github_url: null,
-            is_featured: true,
+            is_featured: false,
         },
         {
             id: 3,
@@ -148,7 +148,7 @@ export const portfolioContent: PortfolioContent = {
             tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
             live_url: 'https://rmmcmi.com',
             github_url: null,
-            is_featured: false,
+            is_featured: true,
         },
     ],
     experiences: [
