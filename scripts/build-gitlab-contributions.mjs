@@ -208,8 +208,8 @@ async function writePayload(payload) {
             payload.member_since = existing.member_since;
         }
 
-        const { generated_at: _existingTimestamp, ...existingData } = existing;
-        const { generated_at: _newTimestamp, ...newData } = payload;
+        const existingData = excludeKey(existing, 'generated_at');
+        const newData = excludeKey(payload, 'generated_at');
 
         if (JSON.stringify(existingData) === JSON.stringify(newData)) {
             return;
@@ -219,6 +219,11 @@ async function writePayload(payload) {
     }
 
     await writeFile(outputPath, `${JSON.stringify(payload, null, 4)}\n`);
+}
+
+function excludeKey(obj, key) {
+    const { [key]: _, ...rest } = obj;
+    return rest;
 }
 
 function startOfUtcDay(date) {
