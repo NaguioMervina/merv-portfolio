@@ -123,7 +123,7 @@ export const portfolioContent: PortfolioContent = {
             description:
                 'A comprehensive school management system for RMMC Gensan campus, handling enrollment, grading, scheduling, student records, and administrative workflows for the institution.',
             thumbnail: '/thumbnails/rmmcgensan.png',
-            tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
+            tech_stack: 'Laravel, Bootstrap, RESTful API, MySQL',
             live_url: 'https://rmmcmain.com',
             github_url: null,
             is_featured: false,
@@ -134,7 +134,7 @@ export const portfolioContent: PortfolioContent = {
             description:
                 'A school management system for RMMC MI campus, providing enrollment management, grade tracking, class scheduling, and student information management capabilities.',
             thumbnail: '/thumbnails/rmmcmi.png',
-            tech_stack: 'Laravel, React, Inertia.js, Tailwind CSS, MySQL',
+            tech_stack: 'Laravel, Bootstrap, RESTful API, MySQL',
             live_url: 'https://rmmcmi.com',
             github_url: null,
             is_featured: true,
