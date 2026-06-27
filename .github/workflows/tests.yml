@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Build Assets
-        run: npm run build
+        run: npx vite build
 
       - name: Create SQLite Database
         run: touch database/database.sqlite
