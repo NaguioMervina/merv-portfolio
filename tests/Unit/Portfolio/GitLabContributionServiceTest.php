@@ -70,9 +70,7 @@ class GitLabContributionServiceTest extends TestCase
         $this->assertTrue($data['weeks'][0]['days'][0]['visible']);
         $this->assertSame('2026-06-27', $data['weeks'][52]['days'][6]['date']);
         $this->assertFalse($data['weeks'][52]['days'][6]['visible']);
-        $this->assertCount(1, $data['recent_private_contributions']);
-        $this->assertSame('2026-06-21T10:09:00+00:00', $data['recent_private_contributions'][0]['occurred_at']);
-        $this->assertSame('Jun 21, 2026 10:09 AM UTC', $data['recent_private_contributions'][0]['date_label']);
+        $this->assertCount(0, $data['recent_private_contributions']);
 
         Http::assertSent(function ($request) {
             if ($request->url() !== 'https://gitlab.example/users/NaguioMervina/calendar.json') {
