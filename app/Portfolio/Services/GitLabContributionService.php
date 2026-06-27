@@ -112,7 +112,7 @@ class GitLabContributionService
             }
 
             try {
-                $day = CarbonImmutable::createFromFormat('Y-m-d', $date);
+                $day = CarbonImmutable::createFromFormat('!Y-m-d', $date);
             } catch (Throwable) {
                 continue;
             }
