@@ -86,7 +86,13 @@ class GitLabContributionService
         CarbonImmutable $startDate,
         CarbonImmutable $endDate,
     ): array {
-        $response = Http::acceptJson()
+        $token = config('portfolio.gitlab.token');
+        $headers = ['Accept' => 'application/json'];
+        if ($token) {
+            $headers['PRIVATE-TOKEN'] = $token;
+        }
+
+        $response = Http::withHeaders($headers)
             ->timeout(max((int) config('portfolio.gitlab.timeout', 8), 1))
             ->retry(2, 150, throw: false)
             ->get($baseUrl.'/users/'.rawurlencode($username).'/calendar.json', [
@@ -258,11 +264,13 @@ class GitLabContributionService
         }
 
         $timeout = max((int) config('portfolio.gitlab.timeout', 8), 1);
+        $token = config('portfolio.gitlab.token');
 
         $responses = Http::pool(
             fn (Pool $pool) => $dates
                 ->mapWithKeys(fn (string $date) => [
                     $date => $pool
+                        ->withHeaders($token ? ['PRIVATE-TOKEN' => $token] : [])
                         ->acceptHtml()
                         ->timeout($timeout)
                         ->retry(2, 150, throw: false)

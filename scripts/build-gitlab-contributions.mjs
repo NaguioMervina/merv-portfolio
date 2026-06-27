@@ -8,6 +8,7 @@ const outputPath = path.join(root, 'resources/js/data/gitlab-contributions.json'
 
 const username = (process.env.GITLAB_USERNAME || process.env.VITE_GITLAB_USERNAME || 'NaguioMervina').trim();
 const baseUrl = (process.env.GITLAB_BASE_URL || process.env.VITE_GITLAB_BASE_URL || 'https://gitlab.com').replace(/\/+$/, '');
+const token = (process.env.GITLAB_TOKEN || process.env.VITE_GITLAB_TOKEN || '').trim();
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
@@ -25,9 +26,12 @@ async function main() {
     endpoint.searchParams.set('end_date', toDateString(today));
 
     try {
-        const response = await fetch(endpoint, {
-            headers: { accept: 'application/json' },
-        });
+        const headers = { accept: 'application/json' };
+        if (token) {
+            headers['PRIVATE-TOKEN'] = token;
+        }
+
+        const response = await fetch(endpoint, { headers });
 
         if (!response.ok) {
             throw new Error(`GitLab calendar request failed with status ${response.status}.`);
