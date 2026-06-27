@@ -23,6 +23,7 @@ jobs:
       - run: npm run refresh:gitlab
         env:
           GITLAB_USERNAME: NaguioMervina
+          GITLAB_MEMBER_SINCE: "May 07, 2024"
 
       - name: Commit and push if changed
         run: |

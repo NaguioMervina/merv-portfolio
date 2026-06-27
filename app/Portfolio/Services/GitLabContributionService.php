@@ -37,7 +37,7 @@ class GitLabContributionService
     private function fetchNormalizedContributions(string $baseUrl, string $username): array
     {
         $today = CarbonImmutable::today();
-        $startDate = $today->subDays(364);
+        $startDate = CarbonImmutable::createFromDate(2010, 1, 1);
 
         try {
             $dailyCounts = $this->fetchCalendarCounts($baseUrl, $username, $startDate, $today);
@@ -69,6 +69,7 @@ class GitLabContributionService
             'available' => true,
             'username' => $username,
             'profile_url' => $baseUrl.'/'.$username,
+            'member_since' => config('portfolio.gitlab.member_since'),
             'total' => $summary['total'],
             'active_days' => $summary['active_days'],
             'longest_streak' => $summary['longest_streak'],
@@ -353,6 +354,7 @@ class GitLabContributionService
             'available' => false,
             'username' => $username,
             'profile_url' => $baseUrl.'/'.$username,
+            'member_since' => config('portfolio.gitlab.member_since'),
             'total' => 0,
             'active_days' => 0,
             'longest_streak' => 0,
