@@ -51,3 +51,6 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/phpunit
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: /home/runner/work/merv-portfolio/merv-portfolio/database/database.sqlite
