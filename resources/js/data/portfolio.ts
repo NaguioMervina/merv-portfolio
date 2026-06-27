@@ -115,9 +115,9 @@ export const portfolioContent: PortfolioContent = {
             id: 3,
             title: 'L1 Support Ticketing System',
             description:
-                'A collaborative ticketing system for managing tasks, tracking issues, and streamlining team workflows in real time, deployed within an ngrok environment using Docker.',
+                'A collaborative ticketing system for managing tasks, tracking issues, and streamlining team workflows in real time. Containerized with Docker and shared through an ngrok public URL.',
             thumbnail: '/thumbnails/ticketing.png',
-            tech_stack: 'Laravel, Vue.js, JavaScript, MySQL, Docker',
+            tech_stack: 'Laravel, Vue.js, JavaScript, MySQL',
             live_url: 'https://twiddling-likewise-perfected.ngrok-free.dev/',
             github_url: null,
             is_featured: false,
