@@ -95,6 +95,7 @@ export const portfolioContent: PortfolioContent = {
             { id: 12, name: 'Docker', icon: 'docker', category: 'tools', proficiency: 76 },
             { id: 13, name: 'Jira', icon: 'jira', category: 'tools', proficiency: 78 },
             { id: 14, name: 'WSL Ubuntu', icon: 'terminal', category: 'tools', proficiency: 80 },
+            { id: 15, name: 'phpMyAdmin', icon: 'database', category: 'tools', proficiency: 82 },
             { id: 16, name: 'PuTTY', icon: 'putty', category: 'tools', proficiency: 80 },
             { id: 17, name: 'MySQL Workbench', icon: 'mysql-workbench', category: 'tools', proficiency: 82 },
         ],
