@@ -881,7 +881,7 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
                         </div>
 
                         <div className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                            Open case study
+                            Open live site
                             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </div>
                     </div>
