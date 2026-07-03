@@ -180,7 +180,7 @@ export const portfolioContent: PortfolioContent = {
             company: 'Western Mindanao State University',
             location: 'Zamboanga City, Philippines',
             start_date: '2018-01-01',
-            end_date: '2023-01-01',
+            end_date: '2023-05-01',
             description:
                 'Completed a Bachelor of Science in Information Technology with project work focused on web-based content management systems.',
             type: 'education',
