@@ -447,10 +447,21 @@ export default function Portfolio() {
 
                     <section id="projects" className="px-5 py-20 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-7xl space-y-10">
-                            <SectionHeading title="Projects" />
+                            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                                <SectionHeading
+                                    eyebrow="Selected work"
+                                    title="Projects with real-world delivery context"
+                                    description="A focused collection of shipped systems, contributor work, and practical product builds — each card opens a concise case-study view."
+                                />
+
+                                <div className="grid grid-cols-2 gap-3 text-sm sm:flex sm:flex-wrap lg:justify-end">
+                                    <ProjectStat label="Published" value={projects.length.toString()} />
+                                    <ProjectStat label="Featured" value={featuredProjects.length.toString()} />
+                                </div>
+                            </div>
 
                             {spotlightProject ? (
-                                <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+                                <div className="grid gap-6 xl:grid-cols-[minmax(0,1.12fr)_minmax(22rem,0.88fr)]">
                                     <ProjectHighlightCard
                                         project={spotlightProject}
                                         onOpen={(event) => {
@@ -459,7 +470,7 @@ export default function Portfolio() {
                                         }}
                                     />
 
-                                    <div className="grid gap-5">
+                                    <div className="grid gap-4">
                                         {supportingProjects.slice(0, 4).map((project) => (
                                             <ProjectCard
                                                 key={project.id}
@@ -843,42 +854,72 @@ function ProjectCredit({ project, className, linkCollaborator = false }: { proje
     );
 }
 
+function ProjectStat({ label, value }: { label: string; value: string }) {
+    return (
+        <div className="rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 shadow-[0_18px_60px_-48px_rgba(15,23,42,0.7)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
+            <div className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">{value}</div>
+            <div className="mt-1 text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">{label}</div>
+        </div>
+    );
+}
+
 function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (event: MouseEvent<HTMLButtonElement>) => void }) {
+    const tags = techTags(project.tech_stack);
+
     return (
         <button
             type="button"
             onClick={onOpen}
-            className="group overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/92 text-left shadow-[0_36px_120px_-64px_rgba(15,23,42,0.7)] transition hover:-translate-y-1 hover:shadow-[0_48px_140px_-60px_rgba(15,23,42,0.8)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none dark:border-slate-800 dark:bg-slate-900/88"
+            className="group overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white/95 text-left shadow-[0_34px_110px_-60px_rgba(15,23,42,0.72)] transition duration-300 hover:-translate-y-1 hover:border-sky-300/80 hover:shadow-[0_46px_130px_-64px_rgba(14,165,233,0.55)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none dark:border-slate-800 dark:bg-slate-900/90 dark:hover:border-sky-500/45"
             aria-label={`View details for ${project.title}`}
         >
-            <div className="grid gap-0 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-                <div className="overflow-hidden bg-slate-100 dark:bg-slate-950">
+            <div className="grid min-h-full gap-0 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+                <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-950">
                     {project.thumbnail ? (
                         <img
                             src={project.thumbnail}
                             alt=""
-                            className="h-full min-h-[18rem] w-full object-cover transition duration-700 group-hover:scale-105"
+                            className="h-full min-h-[21rem] w-full object-cover transition duration-700 group-hover:scale-105"
                         />
                     ) : (
-                        <div className="flex min-h-[18rem] items-center justify-center bg-gradient-to-br from-sky-500 to-violet-500 text-7xl font-semibold text-white">
+                        <div className="flex min-h-[21rem] items-center justify-center bg-gradient-to-br from-sky-500 via-blue-600 to-violet-600 text-7xl font-semibold text-white">
                             {project.title.charAt(0)}
                         </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/5 to-transparent" />
+                    <div className="absolute right-5 bottom-5 left-5 flex flex-wrap items-center gap-2">
+                        <span className="rounded-full border border-white/20 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-900 shadow-sm backdrop-blur dark:bg-slate-950/80 dark:text-white">
+                            Featured case study
+                        </span>
+                        {project.live_url ? (
+                            <span className="rounded-full border border-emerald-300/60 bg-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-white shadow-sm backdrop-blur">
+                                Live project
+                            </span>
+                        ) : null}
+                    </div>
                 </div>
 
                 <div className="flex flex-col justify-between p-6 xl:p-8">
                     <div>
-                        <div className="inline-flex rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-sky-700 uppercase dark:text-sky-300">
-                            Spotlight project
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="inline-flex rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-sky-700 uppercase dark:text-sky-300">
+                                Spotlight
+                            </span>
+                            <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
+                                {tags.length} technologies
+                            </span>
                         </div>
-                        <h3 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">{project.title}</h3>
+                        <h3 className="mt-5 text-3xl leading-tight font-semibold tracking-tight text-slate-950 dark:text-white">{project.title}</h3>
                         <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300">{project.description}</p>
-                        <ProjectCredit project={project} className="mt-4" />
+                        <ProjectCredit
+                            project={project}
+                            className="mt-5 rounded-2xl border border-slate-200 bg-slate-50/75 p-4 dark:border-slate-800 dark:bg-slate-950/70"
+                        />
                     </div>
 
-                    <div className="mt-8 space-y-5">
+                    <div className="mt-8 space-y-6">
                         <div className="flex flex-wrap gap-2">
-                            {techTags(project.tech_stack).map((tech) => (
+                            {tags.map((tech) => (
                                 <span
                                     key={tech}
                                     className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
@@ -888,9 +929,12 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
                             ))}
                         </div>
 
-                        <div className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                            Open live site
-                            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <div className="flex items-center justify-between gap-4 border-t border-slate-200 pt-5 dark:border-slate-800">
+                            <span className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase dark:text-slate-400">Open details</span>
+                            <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                Open live site
+                                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -900,28 +944,53 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
 }
 
 function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: MouseEvent<HTMLButtonElement>) => void }) {
+    const tags = techTags(project.tech_stack);
+
     return (
         <button
             type="button"
             onClick={onOpen}
-            className="group w-full overflow-hidden rounded-[1.75rem] border border-slate-200/70 bg-white/90 p-5 text-left shadow-[0_24px_80px_-56px_rgba(15,23,42,0.6)] transition hover:-translate-y-1 hover:shadow-[0_40px_110px_-58px_rgba(15,23,42,0.65)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none dark:border-slate-800 dark:bg-slate-900/85"
+            className="group grid w-full overflow-hidden rounded-[1.75rem] border border-slate-200/75 bg-white/92 text-left shadow-[0_22px_80px_-58px_rgba(15,23,42,0.62)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/75 hover:shadow-[0_34px_100px_-62px_rgba(14,165,233,0.45)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none sm:grid-cols-[8.5rem_minmax(0,1fr)] dark:border-slate-800 dark:bg-slate-900/86 dark:hover:border-sky-500/45"
             aria-label={`View details for ${project.title}`}
         >
-            <div className="flex items-start justify-between gap-4">
-                <div>
-                    <h3 className="text-xl font-semibold text-slate-950 dark:text-white">{project.title}</h3>
-                    <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
-                    <ProjectCredit project={project} className="mt-3" />
-                </div>
-                <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
-                    {project.is_featured ? 'Featured' : 'Project'}
-                </div>
+            <div className="relative min-h-36 overflow-hidden bg-slate-100 sm:min-h-full dark:bg-slate-950">
+                {project.thumbnail ? (
+                    <img
+                        src={project.thumbnail}
+                        alt=""
+                        className="h-full min-h-36 w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                ) : (
+                    <div className="flex h-full min-h-36 items-center justify-center bg-gradient-to-br from-slate-800 via-sky-700 to-violet-700 text-4xl font-semibold text-white">
+                        {project.title.charAt(0)}
+                    </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent" />
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-2">
-                {techTags(project.tech_stack)
-                    .slice(0, 4)
-                    .map((tech) => (
+            <div className="p-5">
+                <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
+                                {project.role ? project.role : project.is_featured ? 'Featured' : 'Project'}
+                            </span>
+                            {project.github_url ? (
+                                <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
+                                    Source available
+                                </span>
+                            ) : null}
+                        </div>
+                        <h3 className="mt-3 text-xl leading-tight font-semibold text-slate-950 dark:text-white">{project.title}</h3>
+                    </div>
+                    <ArrowUpRight className="mt-1 size-5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sky-600 dark:group-hover:text-sky-300" />
+                </div>
+
+                <p className="mt-3 line-clamp-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
+                <ProjectCredit project={project} className="mt-3" />
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                    {tags.slice(0, 4).map((tech) => (
                         <span
                             key={tech}
                             className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
@@ -929,11 +998,16 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: Mo
                             {tech}
                         </span>
                     ))}
-            </div>
+                    {tags.length > 4 ? (
+                        <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
+                            +{tags.length - 4} more
+                        </span>
+                    ) : null}
+                </div>
 
-            <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                View details
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className="mt-5 border-t border-slate-200 pt-4 text-sm font-semibold text-sky-700 dark:border-slate-800 dark:text-sky-300">
+                    View project details
+                </div>
             </div>
         </button>
     );
