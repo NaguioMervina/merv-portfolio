@@ -36,8 +36,9 @@ async function main() {
         const calendar = await response.json();
         const dailyCounts = normalizeCalendarCounts(calendar, startDate, today);
         const firstContributionDate = findFirstContributionDate(dailyCounts);
-        const rangeStart = firstContributionDate || today;
-        const summary = buildSummary(dailyCounts, rangeStart, today);
+        const metricRangeStart = firstContributionDate || today;
+        const heatmapRangeStart = resolveHeatmapStart(today);
+        const summary = buildSummary(dailyCounts, metricRangeStart, today);
 
         await writePayload({
             available: true,
@@ -48,8 +49,8 @@ async function main() {
             active_days: summary.activeDays,
             longest_streak: summary.longestStreak,
             busiest_day: summary.busiestDay,
-            range_label: firstContributionDate ? `${formatDateLabel(rangeStart)} - ${formatDateLabel(today)}` : 'No contributions yet',
-            weeks: buildHeatmapWeeks(dailyCounts, rangeStart, today),
+            range_label: `${formatDateLabel(heatmapRangeStart)} - ${formatDateLabel(today)}`,
+            weeks: buildHeatmapWeeks(dailyCounts, heatmapRangeStart, today),
         });
     } catch (error) {
         console.warn(`[gitlab] ${error instanceof Error ? error.message : 'Contribution snapshot failed.'}`);
@@ -118,6 +119,10 @@ function buildSummary(dailyCounts, startDate, endDate) {
     }
 
     return { total, activeDays, longestStreak, busiestDay };
+}
+
+function resolveHeatmapStart(endDate) {
+    return addDays(endDate, -364);
 }
 
 function buildHeatmapWeeks(dailyCounts, startDate, endDate) {
