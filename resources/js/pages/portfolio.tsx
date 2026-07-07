@@ -281,10 +281,10 @@ export default function Portfolio() {
                                                 <button
                                                     type="button"
                                                     onClick={() => setShowProfilePicture(true)}
-                                                    className="group relative h-28 w-28 shrink-0 cursor-pointer overflow-hidden rounded-2xl bg-slate-100 transition hover:ring-2 hover:ring-sky-500/50 hover:ring-offset-2 hover:ring-offset-white dark:bg-slate-950 dark:hover:ring-offset-slate-900"
+                                                    className="group relative h-32 w-32 shrink-0 cursor-pointer overflow-hidden rounded-full bg-slate-100 transition hover:ring-2 hover:ring-sky-500/50 hover:ring-offset-2 hover:ring-offset-white sm:h-36 sm:w-36 dark:bg-slate-950 dark:hover:ring-offset-slate-900"
                                                 >
-                                                    <img src={profile.photo} alt={personName} className="h-full w-full rounded-2xl object-contain" />
-                                                    <div className="absolute inset-0 flex items-center justify-center rounded-[1.5rem] bg-black/0 transition group-hover:bg-black/20">
+                                                    <img src={profile.photo} alt={personName} className="h-full w-full rounded-full object-cover object-top" />
+                                                    <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/0 transition group-hover:bg-black/20">
                                                         <svg
                                                             className="size-6 text-white opacity-0 transition group-hover:opacity-100"
                                                             fill="none"
