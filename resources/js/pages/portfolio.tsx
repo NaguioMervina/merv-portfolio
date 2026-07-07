@@ -475,10 +475,9 @@ export default function Portfolio() {
                                             <h3 className="text-sm font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400">
                                                 More project work
                                             </h3>
-                                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Scroll horizontally</span>
                                         </div>
 
-                                        <div className="flex gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
+                                        <div className="flex gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                                             {supportingProjects.slice(0, 4).map((project) => (
                                                 <div key={project.id} className="min-w-[20rem] flex-1 sm:min-w-[23rem] xl:min-w-0">
                                                     <ProjectCard
