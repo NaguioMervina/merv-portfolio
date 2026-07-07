@@ -461,7 +461,7 @@ export default function Portfolio() {
                             </div>
 
                             {spotlightProject ? (
-                                <div className="grid gap-6 xl:grid-cols-[minmax(0,1.12fr)_minmax(22rem,0.88fr)]">
+                                <div className="space-y-6">
                                     <ProjectHighlightCard
                                         project={spotlightProject}
                                         onOpen={(event) => {
@@ -470,17 +470,27 @@ export default function Portfolio() {
                                         }}
                                     />
 
-                                    <div className="grid gap-4">
-                                        {supportingProjects.slice(0, 4).map((project) => (
-                                            <ProjectCard
-                                                key={project.id}
-                                                project={project}
-                                                onOpen={(event) => {
-                                                    projectTriggerRef.current = event.currentTarget;
-                                                    setSelectedProject(project);
-                                                }}
-                                            />
-                                        ))}
+                                    <div className="space-y-3">
+                                        <div className="flex items-center justify-between gap-4">
+                                            <h3 className="text-sm font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400">
+                                                More project work
+                                            </h3>
+                                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Scroll horizontally</span>
+                                        </div>
+
+                                        <div className="flex gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
+                                            {supportingProjects.slice(0, 4).map((project) => (
+                                                <div key={project.id} className="min-w-[20rem] flex-1 sm:min-w-[23rem] xl:min-w-0">
+                                                    <ProjectCard
+                                                        project={project}
+                                                        onOpen={(event) => {
+                                                            projectTriggerRef.current = event.currentTarget;
+                                                            setSelectedProject(project);
+                                                        }}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             ) : (
@@ -950,18 +960,14 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: Mo
         <button
             type="button"
             onClick={onOpen}
-            className="group grid w-full overflow-hidden rounded-[1.75rem] border border-slate-200/75 bg-white/92 text-left shadow-[0_22px_80px_-58px_rgba(15,23,42,0.62)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/75 hover:shadow-[0_34px_100px_-62px_rgba(14,165,233,0.45)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none sm:grid-cols-[6.75rem_minmax(0,1fr)] dark:border-slate-800 dark:bg-slate-900/86 dark:hover:border-sky-500/45"
+            className="group grid h-full w-full overflow-hidden rounded-[1.75rem] border border-slate-200/75 bg-white/92 text-left shadow-[0_22px_80px_-58px_rgba(15,23,42,0.62)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/75 hover:shadow-[0_34px_100px_-62px_rgba(14,165,233,0.45)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none dark:border-slate-800 dark:bg-slate-900/86 dark:hover:border-sky-500/45"
             aria-label={`View details for ${project.title}`}
         >
-            <div className="relative h-28 overflow-hidden bg-slate-100 sm:h-full dark:bg-slate-950">
+            <div className="relative h-32 overflow-hidden bg-slate-100 dark:bg-slate-950">
                 {project.thumbnail ? (
-                    <img
-                        src={project.thumbnail}
-                        alt=""
-                        className="h-28 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-full"
-                    />
+                    <img src={project.thumbnail} alt="" className="h-32 w-full object-cover transition duration-700 group-hover:scale-105" />
                 ) : (
-                    <div className="flex h-28 items-center justify-center bg-gradient-to-br from-slate-800 via-sky-700 to-violet-700 text-3xl font-semibold text-white sm:h-full">
+                    <div className="flex h-32 items-center justify-center bg-gradient-to-br from-slate-800 via-sky-700 to-violet-700 text-3xl font-semibold text-white">
                         {project.title.charAt(0)}
                     </div>
                 )}
