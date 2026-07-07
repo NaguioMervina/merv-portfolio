@@ -111,7 +111,7 @@ export const portfolioContent: PortfolioContent = {
             thumbnail: null,
             tech_stack: 'PHP, HTML, CSS, JavaScript, CMS',
             live_url: null,
-            github_url: null,
+            github_url: 'https://github.com/NaguioMervina/CMS',
             is_featured: false,
         },
         {
