@@ -899,7 +899,7 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/5 to-transparent" />
                     <div className="absolute right-5 bottom-5 left-5 flex flex-wrap items-center gap-2">
                         <span className="rounded-full border border-white/20 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-900 shadow-sm backdrop-blur dark:bg-slate-950/80 dark:text-white">
-                            Featured case study
+                            Featured project
                         </span>
                         {project.live_url ? (
                             <span className="rounded-full border border-emerald-300/60 bg-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-white shadow-sm backdrop-blur">
