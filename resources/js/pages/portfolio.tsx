@@ -1,6 +1,8 @@
+import { GitHubContributions, type GitHubContributionData } from '@/components/portfolio/github-contributions';
 import { GitLabContributions, type GitLabContributionData } from '@/components/portfolio/gitlab-contributions';
 import { SkillIcon } from '@/components/portfolio/skill-icon';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import githubContributionsJson from '@/data/github-contributions.json';
 import gitlabContributionsJson from '@/data/gitlab-contributions.json';
 import { portfolioContent, type Experience, type Project } from '@/data/portfolio';
 import { cn } from '@/lib/utils';
@@ -28,9 +30,11 @@ const navigationSections = [
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'gitlab', label: 'GitLab' },
+    { id: 'github', label: 'GitHub' },
     { id: 'contact', label: 'Contact' },
 ];
 
+const githubContributions = githubContributionsJson as GitHubContributionData;
 const gitlabContributions = gitlabContributionsJson as GitLabContributionData;
 
 export default function Portfolio() {
@@ -281,8 +285,18 @@ export default function Portfolio() {
                                                 >
                                                     <img src={profile.photo} alt={personName} className="h-full w-full rounded-2xl object-cover" />
                                                     <div className="absolute inset-0 flex items-center justify-center rounded-[1.5rem] bg-black/0 transition group-hover:bg-black/20">
-                                                        <svg className="size-6 text-white opacity-0 transition group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                                        <svg
+                                                            className="size-6 text-white opacity-0 transition group-hover:opacity-100"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                            strokeWidth={2}
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                                                            />
                                                         </svg>
                                                     </div>
                                                 </button>
@@ -293,7 +307,7 @@ export default function Portfolio() {
                                             )}
                                             <div>
                                                 <div className="text-xl font-semibold text-slate-950 dark:text-white">{personName}</div>
-                                                <div className="mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{heroSummary}</div>
+                                                <div className="mt-1 line-clamp-2 text-sm text-slate-500 dark:text-slate-400">{heroSummary}</div>
                                                 {profile?.location && (
                                                     <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
                                                         <MapPin className="size-3.5" />
@@ -404,7 +418,7 @@ export default function Portfolio() {
                                             className="rounded-[1.75rem] border border-slate-200/70 bg-white/90 p-6 shadow-[0_24px_80px_-56px_rgba(15,23,42,0.6)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/85"
                                         >
                                             <div className="mb-6">
-                                                    <h3 className="text-xl font-semibold text-slate-950 capitalize dark:text-white">{category}</h3>
+                                                <h3 className="text-xl font-semibold text-slate-950 capitalize dark:text-white">{category}</h3>
                                             </div>
 
                                             <div className="space-y-4">
@@ -519,6 +533,12 @@ export default function Portfolio() {
                     <section className="px-5 py-20 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-7xl">
                             <GitLabContributions contributions={gitlabContributions} />
+                        </div>
+                    </section>
+
+                    <section className="px-5 py-20 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-7xl">
+                            <GitHubContributions contributions={githubContributions} />
                         </div>
                     </section>
 
@@ -736,11 +756,7 @@ export default function Portfolio() {
                 {profile?.photo && (
                     <DialogContent className="max-w-2xl gap-0 overflow-hidden border-0 bg-white p-0 shadow-[0_40px_120px_-60px_rgba(15,23,42,0.75)] sm:rounded-[2rem] dark:bg-slate-950">
                         <div className="relative overflow-hidden rounded-[2rem]">
-                            <img
-                                src={profile.photo}
-                                alt={personName}
-                                className="max-h-[80vh] w-full object-contain"
-                            />
+                            <img src={profile.photo} alt={personName} className="max-h-[80vh] w-full object-contain" />
                             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6 pt-16">
                                 <div className="text-xl font-semibold text-white">{personName}</div>
                             </div>
@@ -794,15 +810,7 @@ function EmptyState({ title, description }: { title: string; description?: strin
     );
 }
 
-function ProjectCredit({
-    project,
-    className,
-    linkCollaborator = false,
-}: {
-    project: Project;
-    className?: string;
-    linkCollaborator?: boolean;
-}) {
+function ProjectCredit({ project, className, linkCollaborator = false }: { project: Project; className?: string; linkCollaborator?: boolean }) {
     if (!project.role && !project.collaborator) {
         return null;
     }
@@ -994,4 +1002,3 @@ function calculateYearsExperience(experiences: Experience[]): number {
 
     return Math.max(years, 1);
 }
-

@@ -2,13 +2,14 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "npm run refresh:gitlab || true && tsc --noEmit && vite build",
+        "build": "npm run refresh:gitlab || true && npm run refresh:github || true && tsc --noEmit && vite build",
         "dev": "vite",
         "preview": "vite preview",
         "refresh:gitlab": "node scripts/build-gitlab-contributions.mjs",
-        "format": "prettier --write index.html scripts/build-gitlab-contributions.mjs resources/css/app.css resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts",
-        "format:check": "prettier --check index.html scripts/build-gitlab-contributions.mjs resources/css/app.css resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts",
-        "lint": "eslint scripts/build-gitlab-contributions.mjs resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts"
+        "refresh:github": "node scripts/build-github-contributions.mjs",
+        "format": "prettier --write index.html scripts/build-gitlab-contributions.mjs scripts/build-github-contributions.mjs resources/css/app.css resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts",
+        "format:check": "prettier --check index.html scripts/build-gitlab-contributions.mjs scripts/build-github-contributions.mjs resources/css/app.css resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts",
+        "lint": "eslint scripts/build-gitlab-contributions.mjs scripts/build-github-contributions.mjs resources/js/main.tsx resources/js/data/portfolio.ts resources/js/pages/portfolio.tsx resources/js/components/portfolio resources/js/components/ui/dialog.tsx resources/js/lib/utils.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.19.0",
