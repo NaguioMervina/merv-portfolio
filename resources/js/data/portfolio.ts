@@ -1,3 +1,5 @@
+import { portfolioImages } from './assets';
+
 export interface Profile {
     id: number;
     user_id: number;
@@ -61,7 +63,7 @@ export const portfolioContent: PortfolioContent = {
         user_id: 1,
         tagline: 'Full-stack developer with strong Laravel and MySQL skills.',
         bio: 'I build and maintain web-based applications with a strong focus on Laravel, MySQL, and practical school management workflows. My experience spans frontend and backend development, database management, troubleshooting, user support, and performance improvements for real operational systems.',
-        photo: '/merv.jpg',
+        photo: portfolioImages.profile.mervin,
         resume_path: null,
         location: 'Zamboanga City, Philippines',
         phone: null,
@@ -117,7 +119,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'L1 Support Ticketing System',
             description:
                 'A collaborative ticketing system for managing tasks, tracking issues, and streamlining team workflows in real time. Containerized with Docker and shared through an ngrok public URL.',
-            thumbnail: '/thumbnails/ticketing.png',
+            thumbnail: portfolioImages.projects.l1Ticketing,
             tech_stack: 'Laravel, Vue.js, JavaScript, MySQL',
             live_url: 'https://twiddling-likewise-perfected.ngrok-free.dev/',
             github_url: null,
@@ -133,7 +135,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'RMMC Gensan - School Management System',
             description:
                 'A comprehensive school management system for RMMC Gensan campus, handling enrollment, grading, scheduling, student records, and administrative workflows for the institution.',
-            thumbnail: '/thumbnails/rmmcgensan.png',
+            thumbnail: portfolioImages.projects.rmmcGensan,
             tech_stack: 'Laravel, Bootstrap, RESTful API, MySQL',
             live_url: 'https://rmmcmain.com',
             github_url: null,
@@ -144,7 +146,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'Tokdash — Agent Dashboard',
             description:
                 'Contributed Mimo/Mimocode usage source support to an open-source agent analytics dashboard. Added SQLite-based usage tracking that reads provider, model, cost, token counts, and session data from the local Mimo database.',
-            thumbnail: null,
+            thumbnail: portfolioImages.projects.tokdash,
             tech_stack: 'Python, SQLite',
             live_url: null,
             github_url: 'https://github.com/JingbiaoMei/Tokdash',
@@ -160,7 +162,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'RMMC MI - School Management System',
             description:
                 'A school management system for RMMC MI campus, providing enrollment management, grade tracking, class scheduling, and student information management capabilities.',
-            thumbnail: '/thumbnails/rmmcmi.png',
+            thumbnail: portfolioImages.projects.rmmcMi,
             tech_stack: 'Laravel, Bootstrap, RESTful API, MySQL',
             live_url: 'https://rmmcmi.com',
             github_url: null,
