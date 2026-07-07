@@ -9,13 +9,21 @@ const outputPath = path.join(root, 'resources/js/data/github-contributions.json'
 const username = (process.env.GITHUB_USERNAME || 'NaguioMervina').trim();
 const token = (process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '').trim();
 const graphqlEndpoint = 'https://api.github.com/graphql';
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+const userQuery = `
+    query GitHubContributionUser($username: String!) {
+        user(login: $username) {
+            createdAt
+        }
+    }
+`;
 
 const contributionQuery = `
-    query GitHubContributions($username: String!) {
+    query GitHubContributions($username: String!, $from: DateTime!, $to: DateTime!) {
         user(login: $username) {
-            contributionsCollection {
+            contributionsCollection(from: $from, to: $to) {
                 contributionCalendar {
-                    totalContributions
                     weeks {
                         contributionDays {
                             date
@@ -34,58 +42,27 @@ async function main() {
         return;
     }
 
+    const today = startOfUtcDay(new Date());
+
     try {
-        const response = await fetch(graphqlEndpoint, {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                authorization: `Bearer ${token}`,
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: contributionQuery,
-                variables: { username },
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error(`GitHub GraphQL request failed with status ${response.status}.`);
-        }
-
-        const payload = await response.json();
-
-        if (payload.errors?.length) {
-            throw new Error(payload.errors.map((error) => error.message).join('; '));
-        }
-
-        const calendar = payload.data?.user?.contributionsCollection?.contributionCalendar;
-
-        if (!calendar) {
-            throw new Error(`GitHub user ${username} was not found or has no contribution calendar.`);
-        }
-
-        const days = calendar.weeks
-            .flatMap((week) => week.contributionDays)
-            .map((day) => ({
-                date: day.date,
-                count: Math.max(Math.trunc(Number(day.contributionCount) || 0), 0),
-            }));
-
-        const firstVisibleDay = days[0] ? parseDateString(days[0].date) : null;
-        const lastVisibleDay = days[days.length - 1] ? parseDateString(days[days.length - 1].date) : null;
-        const summary = buildSummary(days);
+        const createdAt = await fetchUserCreatedAt();
+        const searchStart = startOfUtcDay(createdAt);
+        const dailyCounts = await fetchDailyCounts(searchStart, today);
+        const firstContributionDate = findFirstContributionDate(dailyCounts);
+        const rangeStart = firstContributionDate || today;
+        const summary = buildSummary(dailyCounts, rangeStart, today);
 
         await writePayload({
             available: true,
             username,
             profile_url: `https://github.com/${username}`,
             generated_at: new Date().toISOString(),
-            total: Math.max(Math.trunc(Number(calendar.totalContributions) || 0), 0),
+            total: summary.total,
             active_days: summary.activeDays,
             longest_streak: summary.longestStreak,
             busiest_day: summary.busiestDay,
-            range_label: firstVisibleDay && lastVisibleDay ? `${formatDateLabel(firstVisibleDay)} - ${formatDateLabel(lastVisibleDay)}` : null,
-            weeks: buildHeatmapWeeks(calendar.weeks),
+            range_label: firstContributionDate ? `${formatDateLabel(rangeStart)} - ${formatDateLabel(today)}` : 'No contributions yet',
+            weeks: buildHeatmapWeeks(dailyCounts, rangeStart, today),
         });
     } catch (error) {
         console.warn(`[github] ${error instanceof Error ? error.message : 'Contribution snapshot failed.'}`);
@@ -93,30 +70,114 @@ async function main() {
     }
 }
 
-function buildSummary(days) {
+async function fetchUserCreatedAt() {
+    const payload = await fetchGraphql(userQuery, { username });
+    const createdAt = payload.data?.user?.createdAt;
+
+    if (!createdAt) {
+        throw new Error(`GitHub user ${username} was not found.`);
+    }
+
+    const date = new Date(createdAt);
+
+    if (Number.isNaN(date.getTime())) {
+        throw new Error(`GitHub user ${username} has an invalid createdAt value.`);
+    }
+
+    return date;
+}
+
+async function fetchDailyCounts(startDate, endDate) {
+    const dailyCounts = {};
+
+    for (let rangeStart = startDate; rangeStart <= endDate; rangeStart = addDays(resolveChunkEnd(rangeStart, endDate), 1)) {
+        const rangeEnd = resolveChunkEnd(rangeStart, endDate);
+        const payload = await fetchGraphql(contributionQuery, {
+            username,
+            from: rangeStart.toISOString(),
+            to: endOfUtcDay(rangeEnd).toISOString(),
+        });
+        const weeks = payload.data?.user?.contributionsCollection?.contributionCalendar?.weeks;
+
+        if (!Array.isArray(weeks)) {
+            throw new Error(`GitHub contribution calendar was unavailable for ${username}.`);
+        }
+
+        for (const week of weeks) {
+            for (const day of week.contributionDays ?? []) {
+                const parsedDate = parseDateString(day.date);
+
+                if (!parsedDate || parsedDate < startDate || parsedDate > endDate) {
+                    continue;
+                }
+
+                dailyCounts[toDateString(parsedDate)] = Math.max(Math.trunc(Number(day.contributionCount) || 0), 0);
+            }
+        }
+    }
+
+    return dailyCounts;
+}
+
+async function fetchGraphql(query, variables) {
+    const response = await fetch(graphqlEndpoint, {
+        method: 'POST',
+        headers: {
+            accept: 'application/json',
+            authorization: `Bearer ${token}`,
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({ query, variables }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`GitHub GraphQL request failed with status ${response.status}.`);
+    }
+
+    const payload = await response.json();
+
+    if (payload.errors?.length) {
+        throw new Error(payload.errors.map((error) => error.message).join('; '));
+    }
+
+    return payload;
+}
+
+function resolveChunkEnd(rangeStart, endDate) {
+    const oneYearWindowEnd = addDays(addUtcYears(rangeStart, 1), -1);
+
+    return oneYearWindowEnd < endDate ? oneYearWindowEnd : endDate;
+}
+
+function findFirstContributionDate(dailyCounts) {
+    const dates = Object.keys(dailyCounts)
+        .filter((date) => dailyCounts[date] > 0)
+        .sort();
+
+    return dates.length > 0 ? parseDateString(dates[0]) : null;
+}
+
+function buildSummary(dailyCounts, startDate, endDate) {
+    let total = 0;
     let activeDays = 0;
     let longestStreak = 0;
     let currentStreak = 0;
     let busiestDay = null;
 
-    for (const day of days) {
-        const date = parseDateString(day.date);
+    for (let day = startDate; day <= endDate; day = addDays(day, 1)) {
+        const count = dailyCounts[toDateString(day)] ?? 0;
+        total += count;
 
-        if (!date) {
-            currentStreak = 0;
-            continue;
-        }
-
-        if (day.count > 0) {
+        if (count > 0) {
             activeDays++;
             currentStreak++;
             longestStreak = Math.max(longestStreak, currentStreak);
 
-            if (!busiestDay || day.count > busiestDay.count) {
+            if (!busiestDay || count > busiestDay.count) {
                 busiestDay = {
-                    date: day.date,
-                    label: formatDateLabel(date),
-                    count: day.count,
+                    date: toDateString(day),
+                    label: formatDateLabel(day),
+                    count,
                 };
             }
 
@@ -126,50 +187,63 @@ function buildSummary(days) {
         currentStreak = 0;
     }
 
-    return { activeDays, longestStreak, busiestDay };
+    return { total, activeDays, longestStreak, busiestDay };
 }
 
-function buildHeatmapWeeks(weeks) {
-    return weeks.map((week, weekIndex) => {
-        const days = week.contributionDays.map((day) => ({
-            date: day.date,
-            label: formatDateLabel(parseDateString(day.date)),
-            count: Math.max(Math.trunc(Number(day.contributionCount) || 0), 0),
-            level: resolveIntensityLevel(day.contributionCount),
-            visible: true,
-        }));
+function buildHeatmapWeeks(dailyCounts, startDate, endDate) {
+    const gridStart = startOfWeek(startDate);
+    const gridEnd = endOfWeek(endDate);
+    const weeks = [];
 
-        return {
-            month: resolveWeekMonthLabel(weekIndex, days),
+    for (let weekStart = gridStart; weekStart <= gridEnd; weekStart = addDays(weekStart, 7)) {
+        const days = [];
+        const visibleDays = [];
+
+        for (let offset = 0; offset < 7; offset++) {
+            const day = addDays(weekStart, offset);
+            const visible = day >= startDate && day <= endDate;
+            const count = visible ? (dailyCounts[toDateString(day)] ?? 0) : 0;
+
+            if (visible) {
+                visibleDays.push(day);
+            }
+
+            days.push({
+                date: toDateString(day),
+                label: formatDateLabel(day),
+                count,
+                level: resolveIntensityLevel(count),
+                visible,
+            });
+        }
+
+        weeks.push({
+            month: resolveWeekMonthLabel(weeks, visibleDays),
             days,
-        };
-    });
+        });
+    }
+
+    return weeks;
 }
 
-function resolveWeekMonthLabel(weekIndex, days) {
-    if (days.length === 0) {
+function resolveWeekMonthLabel(existingWeeks, visibleDays) {
+    if (visibleDays.length === 0) {
         return null;
     }
 
-    const firstDay = parseDateString(days[0].date);
-
-    if (weekIndex === 0 && firstDay) {
-        return formatMonthLabel(firstDay);
+    if (existingWeeks.length === 0) {
+        return formatMonthLabel(visibleDays[0]);
     }
 
-    const firstOfMonth = days.find((day) => day.date.endsWith('-01'));
-
-    return firstOfMonth ? formatMonthLabel(parseDateString(firstOfMonth.date)) : null;
+    return visibleDays.some((day) => day.getUTCDate() === 1) ? formatMonthLabel(visibleDays.find((day) => day.getUTCDate() === 1)) : null;
 }
 
 function resolveIntensityLevel(count) {
-    const normalizedCount = Math.max(Math.trunc(Number(count) || 0), 0);
-
-    if (normalizedCount >= 30) return 5;
-    if (normalizedCount >= 20) return 4;
-    if (normalizedCount >= 10) return 3;
-    if (normalizedCount >= 4) return 2;
-    if (normalizedCount >= 1) return 1;
+    if (count >= 30) return 5;
+    if (count >= 20) return 4;
+    if (count >= 10) return 3;
+    if (count >= 4) return 2;
+    if (count >= 1) return 1;
 
     return 0;
 }
@@ -207,6 +281,30 @@ async function writePayload(payload) {
     await writeFile(outputPath, `${JSON.stringify(payload, null, 4)}\n`);
 }
 
+function startOfUtcDay(date) {
+    return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+}
+
+function endOfUtcDay(date) {
+    return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 23, 59, 59));
+}
+
+function startOfWeek(date) {
+    return addDays(date, -date.getUTCDay());
+}
+
+function endOfWeek(date) {
+    return addDays(date, 6 - date.getUTCDay());
+}
+
+function addDays(date, days) {
+    return new Date(date.getTime() + days * MS_PER_DAY);
+}
+
+function addUtcYears(date, years) {
+    return new Date(Date.UTC(date.getUTCFullYear() + years, date.getUTCMonth(), date.getUTCDate()));
+}
+
 function parseDateString(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value ?? '')) {
         return null;
@@ -217,11 +315,11 @@ function parseDateString(value) {
     return new Date(Date.UTC(year, month - 1, day));
 }
 
-function formatDateLabel(date) {
-    if (!date || Number.isNaN(date.getTime())) {
-        return 'Unknown date';
-    }
+function toDateString(date) {
+    return date.toISOString().slice(0, 10);
+}
 
+function formatDateLabel(date) {
     return new Intl.DateTimeFormat('en-US', {
         month: 'short',
         day: 'numeric',
@@ -231,10 +329,6 @@ function formatDateLabel(date) {
 }
 
 function formatMonthLabel(date) {
-    if (!date || Number.isNaN(date.getTime())) {
-        return null;
-    }
-
     return new Intl.DateTimeFormat('en-US', {
         month: 'short',
         timeZone: 'UTC',

@@ -36,7 +36,7 @@ async function main() {
         const calendar = await response.json();
         const dailyCounts = normalizeCalendarCounts(calendar, startDate, today);
         const firstContributionDate = findFirstContributionDate(dailyCounts);
-        const rangeStart = firstContributionDate || startDate;
+        const rangeStart = firstContributionDate || today;
         const summary = buildSummary(dailyCounts, rangeStart, today);
 
         await writePayload({
@@ -48,7 +48,7 @@ async function main() {
             active_days: summary.activeDays,
             longest_streak: summary.longestStreak,
             busiest_day: summary.busiestDay,
-            range_label: `${formatDateLabel(rangeStart)} - ${formatDateLabel(today)}`,
+            range_label: firstContributionDate ? `${formatDateLabel(rangeStart)} - ${formatDateLabel(today)}` : 'No contributions yet',
             weeks: buildHeatmapWeeks(dailyCounts, rangeStart, today),
         });
     } catch (error) {
@@ -80,7 +80,9 @@ function normalizeCalendarCounts(calendar, startDate, endDate) {
 }
 
 function findFirstContributionDate(dailyCounts) {
-    const dates = Object.keys(dailyCounts).filter((date) => dailyCounts[date] > 0).sort();
+    const dates = Object.keys(dailyCounts)
+        .filter((date) => dailyCounts[date] > 0)
+        .sort();
 
     return dates.length > 0 ? parseDateString(dates[0]) : null;
 }
