@@ -879,10 +879,10 @@ function ProjectHighlightCard({ project, onOpen }: { project: Project; onOpen: (
                         <img
                             src={project.thumbnail}
                             alt=""
-                            className="h-full min-h-[21rem] w-full object-cover transition duration-700 group-hover:scale-105"
+                            className="h-64 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-72 xl:h-full xl:max-h-[28rem]"
                         />
                     ) : (
-                        <div className="flex min-h-[21rem] items-center justify-center bg-gradient-to-br from-sky-500 via-blue-600 to-violet-600 text-7xl font-semibold text-white">
+                        <div className="flex h-64 items-center justify-center bg-gradient-to-br from-sky-500 via-blue-600 to-violet-600 text-6xl font-semibold text-white sm:h-72 xl:h-full xl:max-h-[28rem]">
                             {project.title.charAt(0)}
                         </div>
                     )}
@@ -950,18 +950,18 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: Mo
         <button
             type="button"
             onClick={onOpen}
-            className="group grid w-full overflow-hidden rounded-[1.75rem] border border-slate-200/75 bg-white/92 text-left shadow-[0_22px_80px_-58px_rgba(15,23,42,0.62)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/75 hover:shadow-[0_34px_100px_-62px_rgba(14,165,233,0.45)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none sm:grid-cols-[8.5rem_minmax(0,1fr)] dark:border-slate-800 dark:bg-slate-900/86 dark:hover:border-sky-500/45"
+            className="group grid w-full overflow-hidden rounded-[1.75rem] border border-slate-200/75 bg-white/92 text-left shadow-[0_22px_80px_-58px_rgba(15,23,42,0.62)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/75 hover:shadow-[0_34px_100px_-62px_rgba(14,165,233,0.45)] focus-visible:ring-4 focus-visible:ring-sky-500/40 focus-visible:outline-none sm:grid-cols-[6.75rem_minmax(0,1fr)] dark:border-slate-800 dark:bg-slate-900/86 dark:hover:border-sky-500/45"
             aria-label={`View details for ${project.title}`}
         >
-            <div className="relative min-h-36 overflow-hidden bg-slate-100 sm:min-h-full dark:bg-slate-950">
+            <div className="relative h-28 overflow-hidden bg-slate-100 sm:h-full dark:bg-slate-950">
                 {project.thumbnail ? (
                     <img
                         src={project.thumbnail}
                         alt=""
-                        className="h-full min-h-36 w-full object-cover transition duration-700 group-hover:scale-105"
+                        className="h-28 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-full"
                     />
                 ) : (
-                    <div className="flex h-full min-h-36 items-center justify-center bg-gradient-to-br from-slate-800 via-sky-700 to-violet-700 text-4xl font-semibold text-white">
+                    <div className="flex h-28 items-center justify-center bg-gradient-to-br from-slate-800 via-sky-700 to-violet-700 text-3xl font-semibold text-white sm:h-full">
                         {project.title.charAt(0)}
                     </div>
                 )}
