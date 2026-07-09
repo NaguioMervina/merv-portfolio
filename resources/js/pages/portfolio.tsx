@@ -491,7 +491,7 @@ export default function Portfolio() {
                                         </div>
 
                                         <div className="flex gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                                            {supportingProjects.slice(0, 4).map((project) => (
+                                            {supportingProjects.map((project) => (
                                                 <div key={project.id} className="min-w-[20rem] flex-1 sm:min-w-[23rem] xl:min-w-0">
                                                     <ProjectCard
                                                         project={project}
