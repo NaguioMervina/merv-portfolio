@@ -181,8 +181,8 @@ export const portfolioContent: PortfolioContent = {
             is_featured: false,
             role: 'Backend Developer',
             collaborator: {
-                name: 'K-I-MBook',
-                url: 'https://github.com/K-I-MBook',
+                name: 'isaldaba',
+                url: 'https://github.com/isaldaba',
             },
         },
     ],
