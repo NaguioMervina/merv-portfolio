@@ -464,7 +464,7 @@ export default function Portfolio() {
                                 <SectionHeading
                                     eyebrow="Selected work"
                                     title="Projects with real-world delivery context"
-                                    description="A focused collection of shipped systems, contributor work, and practical product builds — each card opens a concise case-study view."
+                                    description="A selection of shipped systems, contributor work, and practical builds."
                                 />
 
                                 <div className="grid grid-cols-2 gap-3 text-sm sm:flex sm:flex-wrap lg:justify-end">
