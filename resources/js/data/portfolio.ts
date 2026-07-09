@@ -146,7 +146,7 @@ export const portfolioContent: PortfolioContent = {
             id: 6,
             title: 'Tokdash — Agent Dashboard',
             description:
-                'Submitted a merged pull request to an open-source agent analytics dashboard. Added SQLite-based usage tracking that reads provider, model, cost, token counts, and session data from the local Mimo database.',
+                'Merged pull request #7 adding Mimo usage source support to an open-source agent analytics dashboard. Implemented SQLite-based usage tracking that reads provider, model, cost, token counts, and session data from the local Mimo database.',
             thumbnail: portfolioImages.projects.tokdash,
             tech_stack: 'Python, SQLite',
             live_url: null,
