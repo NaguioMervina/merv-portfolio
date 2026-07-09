@@ -102,6 +102,7 @@ export const portfolioContent: PortfolioContent = {
             { id: 16, name: 'PuTTY', icon: 'putty', category: 'tools', proficiency: 80 },
             { id: 17, name: 'MySQL Workbench', icon: 'mysql-workbench', category: 'tools', proficiency: 82 },
             { id: 19, name: 'VS Code', icon: 'terminal', category: 'tools', proficiency: 88 },
+            { id: 20, name: 'ngrok', icon: 'terminal', category: 'tools', proficiency: 60 },
         ],
     },
     projects: [
