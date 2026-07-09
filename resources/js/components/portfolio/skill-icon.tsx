@@ -7,6 +7,7 @@ const imageIcons: Record<string, string> = {
     jira: '/images/skills/jira.png',
     'mysql-workbench': '/images/skills/mysql-workbench.png',
     ngrok: '/images/skills/ngrok.png',
+    phpmyadmin: '/images/skills/phpmyadmin.png',
     putty: '/images/skills/putty.png',
     vscode: '/images/skills/vscode.png',
     'wsl-ubuntu': '/images/skills/ubuntu.png',
