@@ -2,12 +2,12 @@
     "available": true,
     "username": "rbriones",
     "profile_url": "https://gitlab.com/rbriones",
-    "generated_at": "2026-07-08T02:47:13.808Z",
+    "generated_at": "2026-07-09T00:11:30.494Z",
     "total": 0,
     "active_days": 0,
     "longest_streak": 0,
     "busiest_day": null,
-    "range_label": "Jul 9, 2025 - Jul 8, 2026",
+    "range_label": "Jul 10, 2025 - Jul 9, 2026",
     "weeks": [
         {
             "month": "Jul",
@@ -38,7 +38,7 @@
                     "label": "Jul 9, 2025",
                     "count": 0,
                     "level": 0,
-                    "visible": true
+                    "visible": false
                 },
                 {
                     "date": "2025-07-10",
@@ -2853,7 +2853,7 @@
                     "label": "Jul 9, 2026",
                     "count": 0,
                     "level": 0,
-                    "visible": false
+                    "visible": true
                 },
                 {
                     "date": "2026-07-10",
