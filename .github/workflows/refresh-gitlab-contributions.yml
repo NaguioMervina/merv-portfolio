@@ -22,7 +22,7 @@ jobs:
 
       - run: npm run refresh:gitlab
         env:
-          GITLAB_USERNAME: rbriones
+          GITLAB_USERNAME: NaguioMervina
 
       - name: Commit and push if changed
         run: |
