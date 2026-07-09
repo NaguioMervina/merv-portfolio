@@ -146,13 +146,13 @@ export const portfolioContent: PortfolioContent = {
             id: 6,
             title: 'Tokdash — Agent Dashboard',
             description:
-                'Contributed Mimo/Mimocode usage source support to an open-source agent analytics dashboard. Added SQLite-based usage tracking that reads provider, model, cost, token counts, and session data from the local Mimo database.',
+                'Submitted a merged pull request to an open-source agent analytics dashboard. Added SQLite-based usage tracking that reads provider, model, cost, token counts, and session data from the local Mimo database.',
             thumbnail: portfolioImages.projects.tokdash,
             tech_stack: 'Python, SQLite',
             live_url: null,
             github_url: 'https://github.com/JingbiaoMei/Tokdash',
             is_featured: false,
-            role: 'Contributor',
+            role: 'Open-Source Contributor',
             collaborator: {
                 name: 'JingbiaoMei',
                 url: 'https://github.com/JingbiaoMei',
