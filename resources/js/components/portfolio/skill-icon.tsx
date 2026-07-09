@@ -6,6 +6,7 @@ interface SkillIconProps {
 const imageIcons: Record<string, string> = {
     jira: '/images/skills/jira.svg',
     ngrok: '/images/skills/ngrok.png',
+    putty: '/images/skills/putty.png',
     vscode: '/images/skills/vscode.png',
     'wsl-ubuntu': '/images/skills/ubuntu.svg',
 };
