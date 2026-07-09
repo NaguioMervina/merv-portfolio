@@ -14,7 +14,10 @@ const brandColors: Record<string, string> = {
     git: '#F05032',
     docker: '#2496ED',
     jira: '#0052CC',
+    ngrok: '#1F1B2D',
     putty: '#0000FF',
+    vscode: '#007ACC',
+    'wsl-ubuntu': '#E95420',
     'mysql-workbench': '#4479A1',
 };
 
@@ -93,10 +96,55 @@ export function SkillIcon({ icon, className = 'size-6' }: SkillIconProps) {
                 <path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.214h2.43v2.373a5.218 5.218 0 0 0 5.232 5.214V11.513zm1.2-10.283v10.283h11.4a5.218 5.218 0 0 0-5.232-5.214h-2.43V3.846A5.218 5.218 0 0 0 11.339 1.23h.432z" />
             </svg>
         ),
+        ngrok: (
+            <svg className={className} viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M7.25 5.5A1.75 1.75 0 0 1 9 3.75h8.25A3.75 3.75 0 0 1 21 7.5v6A6.75 6.75 0 0 1 14.25 20.25H9a1.75 1.75 0 0 1-1.75-1.75V5.5Z"
+                    fill={color}
+                />
+                <path
+                    d="M9 7.5a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-5.75v3h4.75a.75.75 0 0 1 0 1.5H10.5v3.75A.75.75 0 0 1 9 16.5v-9Z"
+                    fill="#fff"
+                />
+            </svg>
+        ),
+        vscode: (
+            <svg className={className} viewBox="0 0 24 24" fill="none">
+                <path
+                    fill={color}
+                    d="M17.64 2.52 9.08 6.62a.57.57 0 0 0-.32.52v9.71c0 .22.12.43.32.53l8.56 4.08a.56.56 0 0 0 .8-.5V3.03a.56.56 0 0 0-.8-.51Z"
+                />
+                <path
+                    fill={color}
+                    d="m5.34 8.15-2.8 2.54a.55.55 0 0 0 0 .82l2.8 2.54 1.9 1.78c.36.34.96.08.96-.42V6.78c0-.5-.6-.76-.96-.42L5.34 8.15Z"
+                    opacity=".9"
+                />
+                <path
+                    fill="#fff"
+                    d="m18.44 7.15-6.5 4.85 6.5 4.85V14.7L14.82 12l3.62-2.7V7.15Z"
+                    opacity=".9"
+                />
+            </svg>
+        ),
         terminal: (
             <svg className={className} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="4 17 10 11 4 5" />
                 <line x1="12" y1="19" x2="20" y2="19" />
+            </svg>
+        ),
+        'wsl-ubuntu': (
+            <svg className={className} viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="7.5" stroke={color} strokeWidth="1.8" />
+                <circle cx="12" cy="7.2" r="1.45" fill={color} />
+                <circle cx="7.85" cy="14.35" r="1.45" fill={color} />
+                <circle cx="16.15" cy="14.35" r="1.45" fill={color} />
+                <path
+                    d="M11.52 8.52 9.1 12.72m5.8 0-2.42-4.2m-1.56 6.73h2.16"
+                    stroke={color}
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
             </svg>
         ),
         support: (
