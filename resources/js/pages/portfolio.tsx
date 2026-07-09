@@ -993,11 +993,6 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (event: Mo
                             <span className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
                                 {project.role ? project.role : project.is_featured ? 'Featured' : 'Project'}
                             </span>
-                            {project.github_url ? (
-                                <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
-                                    Source available
-                                </span>
-                            ) : null}
                         </div>
                         <h3 className="mt-3 text-xl leading-tight font-semibold text-slate-950 dark:text-white">{project.title}</h3>
                     </div>
