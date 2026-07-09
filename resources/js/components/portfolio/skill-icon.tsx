@@ -4,8 +4,10 @@ interface SkillIconProps {
 }
 
 const imageIcons: Record<string, string> = {
+    jira: '/images/skills/jira.svg',
     ngrok: '/images/skills/ngrok.png',
     vscode: '/images/skills/vscode.png',
+    'wsl-ubuntu': '/images/skills/ubuntu.svg',
 };
 
 const brandColors: Record<string, string> = {
