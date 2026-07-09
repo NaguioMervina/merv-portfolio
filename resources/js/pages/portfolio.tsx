@@ -12,6 +12,7 @@ import {
     Briefcase,
     ChevronRight,
     Code2,
+    Download,
     FolderGit2,
     Github,
     Layers3,
@@ -225,6 +226,18 @@ export default function Portfolio() {
                                         Start a conversation
                                         <ChevronRight className="size-4" />
                                     </button>
+                                    {profile.resume_path ? (
+                                        <a
+                                            href={profile.resume_path}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            download
+                                            className="inline-flex items-center gap-2 rounded-full border border-sky-300 bg-sky-50 px-6 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100 dark:border-sky-700 dark:bg-sky-950/50 dark:text-sky-100 dark:hover:border-sky-600"
+                                        >
+                                            Download CV
+                                            <Download className="size-4" />
+                                        </a>
+                                    ) : null}
                                 </div>
 
                                 <div className="flex flex-wrap gap-3">

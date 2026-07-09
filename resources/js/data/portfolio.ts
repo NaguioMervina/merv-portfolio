@@ -61,10 +61,10 @@ export const portfolioContent: PortfolioContent = {
     profile: {
         id: 1,
         user_id: 1,
-        tagline: 'Full-stack developer with strong Laravel and MySQL skills.',
-        bio: 'I build and maintain web-based applications with a strong focus on Laravel, MySQL, and practical school management workflows. My experience spans frontend and backend development, database management, troubleshooting, user support, and performance improvements for real operational systems.',
+        tagline: 'Full-stack web developer focused on Laravel, MySQL, and practical school management systems.',
+        bio: 'I develop, maintain, and optimize web-based applications with hands-on experience across Laravel, MySQL, REST-style APIs, JavaScript, jQuery, AJAX, Bootstrap, React, and Vue. My work spans frontend and backend delivery, database management, troubleshooting, client support, requirements coordination, and performance improvements for real operational systems.',
         photo: portfolioImages.profile.mervin,
-        resume_path: null,
+        resume_path: '/resume/mervin-naguio-cv.pdf',
         location: 'Zamboanga City, Philippines',
         phone: null,
         github_url: 'https://github.com/NaguioMervina',
@@ -87,6 +87,7 @@ export const portfolioContent: PortfolioContent = {
             { id: 6, name: 'React.js', icon: 'react', category: 'frontend', proficiency: 82 },
             { id: 7, name: 'Vue.js', icon: 'vue', category: 'frontend', proficiency: 78 },
             { id: 8, name: 'HTML, CSS, Bootstrap', icon: 'layout', category: 'frontend', proficiency: 88 },
+            { id: 18, name: 'jQuery / AJAX', icon: 'javascript', category: 'frontend', proficiency: 80 },
         ],
         database: [
             { id: 9, name: 'MySQL', icon: 'mysql', category: 'database', proficiency: 86 },
@@ -100,6 +101,7 @@ export const portfolioContent: PortfolioContent = {
             { id: 15, name: 'phpMyAdmin', icon: 'database', category: 'tools', proficiency: 82 },
             { id: 16, name: 'PuTTY', icon: 'putty', category: 'tools', proficiency: 80 },
             { id: 17, name: 'MySQL Workbench', icon: 'mysql-workbench', category: 'tools', proficiency: 82 },
+            { id: 19, name: 'VS Code', icon: 'terminal', category: 'tools', proficiency: 88 },
         ],
     },
     projects: [
@@ -113,6 +115,7 @@ export const portfolioContent: PortfolioContent = {
             live_url: null,
             github_url: 'https://github.com/NaguioMervina/CMS',
             is_featured: false,
+            role: 'Lead Developer',
         },
         {
             id: 3,
@@ -172,7 +175,7 @@ export const portfolioContent: PortfolioContent = {
     experiences: [
         {
             id: 1,
-            title: 'Full Stack Developer',
+            title: 'Junior Web Developer',
             company: 'KumoSoft Inc.',
             location: 'Koronadal City, South Cotabato',
             start_date: '2024-06-12',
