@@ -62,7 +62,7 @@ export const portfolioContent: PortfolioContent = {
         id: 1,
         user_id: 1,
         tagline: 'Full-stack web developer focused on Laravel, MySQL, and practical school management systems.',
-        bio: 'I develop, maintain, and optimize web-based applications with hands-on experience across Laravel, MySQL, REST-style APIs, JavaScript, jQuery, AJAX, Bootstrap, React, and Vue. My work spans frontend and backend delivery, database management, troubleshooting, client support, requirements coordination, and performance improvements for real operational systems.',
+        bio: 'I develop, maintain, and optimize web-based applications with hands-on experience across Laravel, MySQL, REST-style APIs, JavaScript, jQuery, AJAX, Bootstrap, React, and Vue. My work spans frontend and backend delivery, database management, troubleshooting, client support, requirements coordination, client meetings, feature presentations, and performance improvements for real operational systems.',
         photo: portfolioImages.profile.mervin,
         resume_path: '/resume/mervin-naguio-cv.pdf',
         location: 'Zamboanga City, Philippines',
@@ -179,7 +179,7 @@ export const portfolioContent: PortfolioContent = {
             start_date: '2024-06-12',
             end_date: null,
             description:
-                'Developed and maintained a school management system using Laravel and MySQL. Enhanced enrollment, grading, scheduling, and student classification modules while supporting users and improving system functionality.',
+                'Developed and maintained a school management system using Laravel and MySQL. Enhanced enrollment, grading, scheduling, and student classification modules while supporting users, joining client meetings, presenting new features, and improving system functionality.',
             type: 'work',
         },
         {
