@@ -174,8 +174,8 @@ export const portfolioContent: PortfolioContent = {
             title: 'PickleBook — Booking Management System',
             description:
                 'A complete booking management system for handling reservations, schedules, payments, equipment rentals, receipts, reports, and customer records. Built for venues, sports courts, meeting rooms, and other reservation-based services. Responsible for database design, management, and core backend functions.',
-            thumbnail: null,
-            tech_stack: 'Laravel, Vue.js, Tailwind CSS, MySQL',
+            thumbnail: portfolioImages.projects.picklebook,
+            tech_stack: 'PHP 8.2, Laravel, React, Tailwind CSS, MySQL 8.0, Docker, Nginx, Vite',
             live_url: null,
             github_url: 'https://github.com/K-I-MBook/booking-system',
             is_featured: false,
