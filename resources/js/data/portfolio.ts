@@ -169,6 +169,22 @@ export const portfolioContent: PortfolioContent = {
             github_url: null,
             is_featured: true,
         },
+        {
+            id: 7,
+            title: 'PickleBook — Booking System',
+            description:
+                'A collaborative booking system built to streamline reservation management. Responsible for database design, management, and core backend functions powering the platform.',
+            thumbnail: null,
+            tech_stack: 'Laravel, MySQL',
+            live_url: null,
+            github_url: 'https://github.com/K-I-MBook/booking-system',
+            is_featured: false,
+            role: 'Backend Developer',
+            collaborator: {
+                name: 'K-I-MBook',
+                url: 'https://github.com/K-I-MBook',
+            },
+        },
     ],
     experiences: [
         {
