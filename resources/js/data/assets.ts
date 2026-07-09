@@ -7,5 +7,6 @@ export const portfolioImages = {
         rmmcGensan: '/images/projects/rmmc-gensan.webp',
         rmmcMi: '/images/projects/rmmc-mi.webp',
         tokdash: '/images/projects/tokdash.webp',
+        wmsuCms: '/images/projects/wmsu-cms.png',
     },
 } as const;

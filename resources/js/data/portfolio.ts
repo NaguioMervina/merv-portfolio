@@ -108,7 +108,7 @@ export const portfolioContent: PortfolioContent = {
             title: 'WMSU Distance Learning CMS',
             description:
                 'A web-based content management system for Western Mindanao State University that helps showcase and promote distance learning programs while allowing administrators to manage site content.',
-            thumbnail: null,
+            thumbnail: portfolioImages.projects.wmsuCms,
             tech_stack: 'PHP, HTML, CSS, JavaScript, CMS',
             live_url: null,
             github_url: 'https://github.com/NaguioMervina/CMS',
