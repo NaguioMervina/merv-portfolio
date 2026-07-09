@@ -125,7 +125,7 @@ export const portfolioContent: PortfolioContent = {
             live_url: 'https://twiddling-likewise-perfected.ngrok-free.dev/',
             github_url: null,
             is_featured: false,
-            role: 'Contributor',
+            role: 'Developer',
             collaborator: {
                 name: 'isaldaba',
                 url: 'https://github.com/isaldaba',
