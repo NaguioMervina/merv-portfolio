@@ -70,24 +70,30 @@ export default function Portfolio() {
         localStorage.setItem('darkMode', String(darkMode));
     }, [darkMode]);
 
-    const closedByBackRef = useRef(false);
+    const normalCloseRef = useRef(false);
 
     useEffect(() => {
         if (!selectedProject) return;
 
-        if (!closedByBackRef.current) {
-            history.pushState({ projectDialog: true }, '');
-        }
-        closedByBackRef.current = false;
+        history.pushState({ projectDialog: true }, '');
 
         const handlePopState = () => {
-            closedByBackRef.current = true;
+            if (normalCloseRef.current) {
+                normalCloseRef.current = false;
+                return;
+            }
             setSelectedProject(null);
         };
 
         window.addEventListener('popstate', handlePopState);
         return () => window.removeEventListener('popstate', handlePopState);
     }, [selectedProject]);
+
+    const closeProjectDialog = () => {
+        normalCloseRef.current = true;
+        setSelectedProject(null);
+        history.back();
+    };
 
     const skillsByCategory = useMemo(() => Object.entries(skills).sort(([left], [right]) => left.localeCompare(right)), [skills]);
     const allSkills = useMemo(() => skillsByCategory.flatMap(([, categorySkills]) => categorySkills), [skillsByCategory]);
@@ -714,7 +720,7 @@ export default function Portfolio() {
                 open={selectedProject !== null}
                 onOpenChange={(open) => {
                     if (!open) {
-                        setSelectedProject(null);
+                        closeProjectDialog();
                     }
                 }}
             >
