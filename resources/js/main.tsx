@@ -1,5 +1,6 @@
 import '../css/app.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import { createRoot } from 'react-dom/client';
 import Portfolio from './pages/portfolio';
 
@@ -9,4 +10,9 @@ if (!root) {
     throw new Error('Root element not found.');
 }
 
-createRoot(root).render(<Portfolio />);
+createRoot(root).render(
+    <>
+        <Portfolio />
+        <Analytics />
+    </>,
+);
