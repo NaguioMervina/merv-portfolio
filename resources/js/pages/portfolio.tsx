@@ -228,7 +228,10 @@ export default function Portfolio() {
                             <div className="space-y-8">
                                 <div className="space-y-5">
                                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                                        Software Developer · Laravel · React · Vite
+                                        Full Stack Developer · Backend Development · AI-Assisted Software Engineering
+                                    </p>
+                                    <p className="text-base text-slate-600 dark:text-slate-300">
+                                        Building enterprise software with modern engineering practices and responsible AI integration.
                                     </p>
                                     <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-balance text-slate-950 sm:text-6xl xl:text-7xl dark:text-white">
                                         {heroTagline}

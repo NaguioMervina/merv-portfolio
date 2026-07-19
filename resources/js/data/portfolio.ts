@@ -61,8 +61,8 @@ export const portfolioContent: PortfolioContent = {
     profile: {
         id: 1,
         user_id: 1,
-        tagline: 'Full-stack web developer focused on Laravel, MySQL, and practical school management systems.',
-        bio: 'I develop, maintain, and optimize web-based applications with hands-on experience across Laravel, MySQL, REST-style APIs, JavaScript, jQuery, AJAX, Bootstrap, React, and Vue. My work spans frontend and backend delivery, database management, troubleshooting, client support, requirements coordination, client meetings, feature presentations, and performance improvements for real operational systems.',
+        tagline: 'Full Stack Web Developer specializing in Backend Development and AI-Assisted Software Engineering.',
+        bio: 'I develop, maintain, and optimize enterprise web applications with hands-on experience in Laravel, MySQL, RESTful APIs, JavaScript, and modern frontend technologies. My work includes designing business-critical features, optimizing databases, solving production issues, collaborating with stakeholders, and leveraging AI-assisted software development to improve implementation planning, debugging, code reviews, and development workflows.',
         photo: portfolioImages.profile.mervin,
         resume_path: '/resume/mervin-naguio-cv.pdf',
         location: 'Zamboanga City, Philippines',
