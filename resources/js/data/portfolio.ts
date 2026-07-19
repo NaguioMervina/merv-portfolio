@@ -68,7 +68,7 @@ export const portfolioContent: PortfolioContent = {
         location: 'Zamboanga City, Philippines',
         phone: null,
         github_url: 'https://github.com/NaguioMervina',
-        linkedin_url: 'https://www.linkedin.com/in/mervin-naguio-112471282/',
+        linkedin_url: 'https://www.linkedin.com/in/mervin-naguio/',
         twitter_url: null,
         user: {
             name: 'Mervin Naguio',
