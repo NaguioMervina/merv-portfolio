@@ -200,7 +200,7 @@ export const portfolioContent: PortfolioContent = {
         },
         {
             id: 2,
-            title: 'IT Technical Support',
+            title: 'IT Technical Support Specialist',
             company: 'Pricewise Marketing Corporation',
             location: 'Zamboanga City, Philippines',
             start_date: '2023-09-01',
