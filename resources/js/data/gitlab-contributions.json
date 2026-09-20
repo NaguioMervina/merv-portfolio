@@ -2,73 +2,19 @@
     "available": true,
     "username": "NaguioMervina",
     "profile_url": "https://gitlab.com/NaguioMervina",
-    "generated_at": "2026-09-19T03:34:06.902Z",
-    "total": 1410,
-    "active_days": 279,
+    "generated_at": "2026-09-20T00:44:32.375Z",
+    "total": 1408,
+    "active_days": 278,
     "longest_streak": 24,
     "busiest_day": {
         "date": "2026-01-13",
         "label": "Jan 13, 2026",
         "count": 41
     },
-    "range_label": "Sep 20, 2025 - Sep 19, 2026",
+    "range_label": "Sep 21, 2025 - Sep 20, 2026",
     "weeks": [
         {
             "month": "Sep",
-            "days": [
-                {
-                    "date": "2025-09-14",
-                    "label": "Sep 14, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-15",
-                    "label": "Sep 15, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-16",
-                    "label": "Sep 16, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-17",
-                    "label": "Sep 17, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-18",
-                    "label": "Sep 18, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-19",
-                    "label": "Sep 19, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-09-20",
-                    "label": "Sep 20, 2025",
-                    "count": 4,
-                    "level": 2,
-                    "visible": true
-                }
-            ]
-        },
-        {
-            "month": null,
             "days": [
                 {
                     "date": "2025-09-21",
@@ -2872,6 +2818,60 @@
                     "count": 0,
                     "level": 0,
                     "visible": true
+                }
+            ]
+        },
+        {
+            "month": null,
+            "days": [
+                {
+                    "date": "2026-09-20",
+                    "label": "Sep 20, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": true
+                },
+                {
+                    "date": "2026-09-21",
+                    "label": "Sep 21, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-09-22",
+                    "label": "Sep 22, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-09-23",
+                    "label": "Sep 23, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-09-24",
+                    "label": "Sep 24, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-09-25",
+                    "label": "Sep 25, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-09-26",
+                    "label": "Sep 26, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
                 }
             ]
         }
