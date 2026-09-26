@@ -61,12 +61,12 @@ export const portfolioContent: PortfolioContent = {
     profile: {
         id: 1,
         user_id: 1,
-        tagline: 'Full Stack Web Developer specializing in Backend Development and AI-Assisted Software Engineering.',
-        bio: 'I develop, maintain, and optimize enterprise web applications with hands-on experience in Laravel, MySQL, RESTful APIs, JavaScript, and modern frontend technologies. My work includes designing business-critical features, optimizing databases, solving production issues, collaborating with stakeholders, and leveraging AI-assisted software development to improve implementation planning, debugging, code reviews, and development workflows.',
+        tagline: 'Subject Matter Expert (SME) and Full Stack Developer',
+        bio: 'I am a Subject Matter Expert (SME) and Full Stack Developer experienced in developing and supporting large-scale School Management Systems. I work with PHP, Laravel, MySQL, RESTful APIs, database management, troubleshooting, and system optimization. As an SME and Main Developer, I provide technical and functional expertise across multiple school implementations, collaborate with stakeholders, and deliver solutions aligned with business requirements. I also use AI-assisted software development for implementation planning, debugging, code review, testing, and development workflows.',
         photo: portfolioImages.profile.mervin,
         resume_path: '/resume/mervin-naguio-cv.pdf',
         location: 'Zamboanga City, Philippines',
-        phone: null,
+        phone: '09976783301',
         github_url: 'https://github.com/NaguioMervina',
         linkedin_url: 'https://www.linkedin.com/in/mervin-naguio/',
         twitter_url: null,
@@ -189,17 +189,28 @@ export const portfolioContent: PortfolioContent = {
     experiences: [
         {
             id: 1,
-            title: 'Junior Web Developer',
+            title: 'Subject Matter Expert (SME)',
             company: 'KumoSoft Inc.',
             location: 'Koronadal City, South Cotabato',
-            start_date: '2024-06-12',
+            start_date: '2026-08-01',
             end_date: null,
             description:
-                'Developed and maintained a school management system using Laravel and MySQL. Enhanced enrollment, grading, scheduling, and student classification modules while supporting users, joining client meetings, presenting new features, and improving system functionality.',
+                'Handle development issues, system concerns, and enhancements across multiple school implementations. Provide technical and functional solutions based on school requirements and business processes.',
             type: 'work',
         },
         {
             id: 2,
+            title: 'Junior Web Developer / Main Developer',
+            company: 'KumoSoft Inc.',
+            location: 'Koronadal City, South Cotabato',
+            start_date: '2024-06-01',
+            end_date: '2026-07-31',
+            description:
+                'Developed and maintained a School Management System using Laravel and MySQL. Enhanced and maintained enrollment, grading, scheduling, accounting, and other core system modules, improving system functionality and performance.',
+            type: 'work',
+        },
+        {
+            id: 3,
             title: 'IT Technical Support Specialist',
             company: 'Pricewise Marketing Corporation',
             location: 'Zamboanga City, Philippines',
@@ -210,7 +221,7 @@ export const portfolioContent: PortfolioContent = {
             type: 'work',
         },
         {
-            id: 3,
+            id: 4,
             title: 'Bachelor of Science in Information Technology',
             company: 'Western Mindanao State University',
             location: 'Zamboanga City, Philippines',
