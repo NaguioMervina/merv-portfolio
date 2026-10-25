@@ -2,73 +2,19 @@
     "available": true,
     "username": "NaguioMervina",
     "profile_url": "https://gitlab.com/NaguioMervina",
-    "generated_at": "2026-10-24T10:26:03.365Z",
-    "total": 1340,
-    "active_days": 278,
+    "generated_at": "2026-10-25T00:55:19.117Z",
+    "total": 1338,
+    "active_days": 277,
     "longest_streak": 24,
     "busiest_day": {
         "date": "2026-01-13",
         "label": "Jan 13, 2026",
         "count": 41
     },
-    "range_label": "Oct 25, 2025 - Oct 24, 2026",
+    "range_label": "Oct 26, 2025 - Oct 25, 2026",
     "weeks": [
         {
             "month": "Oct",
-            "days": [
-                {
-                    "date": "2025-10-19",
-                    "label": "Oct 19, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-20",
-                    "label": "Oct 20, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-21",
-                    "label": "Oct 21, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-22",
-                    "label": "Oct 22, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-23",
-                    "label": "Oct 23, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-24",
-                    "label": "Oct 24, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-10-25",
-                    "label": "Oct 25, 2025",
-                    "count": 2,
-                    "level": 1,
-                    "visible": true
-                }
-            ]
-        },
-        {
-            "month": "Nov",
             "days": [
                 {
                     "date": "2025-10-26",
@@ -2872,6 +2818,60 @@
                     "count": 1,
                     "level": 1,
                     "visible": true
+                }
+            ]
+        },
+        {
+            "month": null,
+            "days": [
+                {
+                    "date": "2026-10-25",
+                    "label": "Oct 25, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": true
+                },
+                {
+                    "date": "2026-10-26",
+                    "label": "Oct 26, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-10-27",
+                    "label": "Oct 27, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-10-28",
+                    "label": "Oct 28, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-10-29",
+                    "label": "Oct 29, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-10-30",
+                    "label": "Oct 30, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-10-31",
+                    "label": "Oct 31, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
                 }
             ]
         }
