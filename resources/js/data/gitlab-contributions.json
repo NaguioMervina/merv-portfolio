@@ -2,7 +2,7 @@
     "available": true,
     "username": "NaguioMervina",
     "profile_url": "https://gitlab.com/NaguioMervina",
-    "generated_at": "2026-11-05T11:56:23.295Z",
+    "generated_at": "2026-11-06T00:49:33.041Z",
     "total": 1341,
     "active_days": 279,
     "longest_streak": 24,
@@ -11,7 +11,7 @@
         "label": "Jan 13, 2026",
         "count": 41
     },
-    "range_label": "Nov 6, 2025 - Nov 5, 2026",
+    "range_label": "Nov 7, 2025 - Nov 6, 2026",
     "weeks": [
         {
             "month": "Nov",
@@ -49,7 +49,7 @@
                     "label": "Nov 6, 2025",
                     "count": 0,
                     "level": 0,
-                    "visible": true
+                    "visible": false
                 },
                 {
                     "date": "2025-11-07",
@@ -2864,7 +2864,7 @@
                     "label": "Nov 6, 2026",
                     "count": 0,
                     "level": 0,
-                    "visible": false
+                    "visible": true
                 },
                 {
                     "date": "2026-11-07",
