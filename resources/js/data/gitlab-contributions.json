@@ -2,7 +2,7 @@
     "available": true,
     "username": "NaguioMervina",
     "profile_url": "https://gitlab.com/NaguioMervina",
-    "generated_at": "2026-11-07T15:29:02.167Z",
+    "generated_at": "2026-11-08T04:53:04.898Z",
     "total": 1347,
     "active_days": 281,
     "longest_streak": 24,
@@ -11,64 +11,10 @@
         "label": "Jan 13, 2026",
         "count": 41
     },
-    "range_label": "Nov 8, 2025 - Nov 7, 2026",
+    "range_label": "Nov 9, 2025 - Nov 8, 2026",
     "weeks": [
         {
             "month": "Nov",
-            "days": [
-                {
-                    "date": "2025-11-02",
-                    "label": "Nov 2, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-03",
-                    "label": "Nov 3, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-04",
-                    "label": "Nov 4, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-05",
-                    "label": "Nov 5, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-06",
-                    "label": "Nov 6, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-07",
-                    "label": "Nov 7, 2025",
-                    "count": 0,
-                    "level": 0,
-                    "visible": false
-                },
-                {
-                    "date": "2025-11-08",
-                    "label": "Nov 8, 2025",
-                    "count": 1,
-                    "level": 1,
-                    "visible": true
-                }
-            ]
-        },
-        {
-            "month": null,
             "days": [
                 {
                     "date": "2025-11-09",
@@ -2872,6 +2818,60 @@
                     "count": 1,
                     "level": 1,
                     "visible": true
+                }
+            ]
+        },
+        {
+            "month": null,
+            "days": [
+                {
+                    "date": "2026-11-08",
+                    "label": "Nov 8, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": true
+                },
+                {
+                    "date": "2026-11-09",
+                    "label": "Nov 9, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-11-10",
+                    "label": "Nov 10, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-11-11",
+                    "label": "Nov 11, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-11-12",
+                    "label": "Nov 12, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-11-13",
+                    "label": "Nov 13, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
+                },
+                {
+                    "date": "2026-11-14",
+                    "label": "Nov 14, 2026",
+                    "count": 0,
+                    "level": 0,
+                    "visible": false
                 }
             ]
         }
